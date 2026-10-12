@@ -1,20 +1,50 @@
 @import "tailwindcss";
 
+/* Amaare palette — sage from the logo, cream and deep olive. */
 @theme {
-  --color-cream: #f4ede2;
-  --color-sand: #e9dfcf;
-  --color-paper: #faf6ef;
-  --color-forest: #252d22;
-  --color-forest-soft: #2f3a2c;
-  --color-clay: #b4552f;
-  --color-clay-dark: #9a4625;
-  --color-peach: #e3a07c;
-  --color-ink: #2b2925;
-  --color-muted: #6f675c;
-  --color-line: #d9cdb9;
+  --color-cream: #f3ede2;
+  --color-linen: #e9e1d2;
+  --color-paper: #faf7f1;
+  --color-sage: #6d7d69;
+  --color-sage-deep: #4f5d4b;
+  --color-sage-pale: #c9d1bf;
+  --color-olive: #2d3729;
+  --color-olive-deep: #222a1f;
+  --color-ink: #262822;
+  --color-muted: #6c6d64;
+  --color-line: #d8cfbe;
 
-  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-display: var(--font-gilda), "Times New Roman", serif;
+  --font-italic: var(--font-cormorant), Georgia, serif;
   --font-sans: var(--font-jost), system-ui, sans-serif;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-rise: rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-slowzoom: slowzoom 18s ease-out both;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes slowzoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 html {
@@ -25,17 +55,88 @@ body {
   background: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-weight: 300;
 }
 
-.arch {
-  border-radius: 999px 999px 14px 14px;
+/* Fine paper grain over the whole page. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.eyebrow {
+::selection {
+  background: var(--color-sage);
+  color: var(--color-paper);
+}
+
+.kicker {
   font-family: var(--font-sans);
-  font-size: 0.68rem;
-  letter-spacing: 0.28em;
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.04;
+}
+
+.accent {
+  font-family: var(--font-italic);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+/* Logo used as a recolourable mask (takes the text colour). */
+.brand-mask {
+  display: inline-block;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+/* Scroll reveal: elements start hidden only once JS has marked the page. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 details > summary {

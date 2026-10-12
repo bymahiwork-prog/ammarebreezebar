@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { Button, Container, Eyebrow, Photo, Title } from "@/components/ui";
+import { Brand } from "@/components/brand";
+import { Button, Container, Display, Img, Kicker, Reveal } from "@/components/ui";
+import { PageHero } from "@/components/sections";
 import { GalleryTabs } from "./gallery-tabs";
 
 export const metadata: Metadata = {
@@ -7,135 +9,129 @@ export const metadata: Metadata = {
   description: "Food, ambience, people and moments around the table at Amaare Breeze Bar, Adchini, South Delhi.",
 };
 
-type Shot = { src: string; alt: string };
-
-const sections: {
-  id: string;
-  tab: string;
-  plain: string;
-  accent: string;
-  text: string;
-  shape: "arch" | "rounded";
-  cols: string;
-  aspect: string;
-  shots: (Shot | null)[];
-}[] = [
-  {
-    id: "the-space",
-    tab: "The Space",
-    plain: "Settle In.",
-    accent: "Stay Awhile.",
-    text: "A setting made for easy conversations and memorable evenings.",
-    shape: "arch",
-    cols: "grid-cols-1 sm:grid-cols-3",
-    aspect: "aspect-[1/0.95]",
-    shots: [
-      { src: "/images/girl-brown.jpg", alt: "Guest in Amaare's garden dining room by the fountain" },
-      { src: "/images/statue-face.jpg", alt: "Carved stone face detail at the bar" },
-      { src: "/images/domes.jpg", alt: "Glass cloches and a table lamp on a striped banquette" },
-    ],
-  },
-  {
-    id: "food-drinks",
-    tab: "Food & Drinks",
-    plain: "Made to Be",
-    accent: "Savoured",
-    text: "Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for.",
-    shape: "rounded",
-    cols: "grid-cols-2 lg:grid-cols-4",
-    aspect: "aspect-square",
-    shots: [
-      { src: "/images/food-plate.jpg", alt: "A plated signature dish" },
-      { src: "/images/green-dish.jpg", alt: "A green herb dish being served" },
-      { src: "/images/drink-amber.jpg", alt: "An amber cocktail on a coaster" },
-      { src: "/images/pour.jpg", alt: "A bartender pouring into a mixing glass" },
-    ],
-  },
-  {
-    id: "the-evenings",
-    tab: "The Evenings",
-    plain: "Good Food. Good Music.",
-    accent: "Good Company.",
-    text: "From relaxed dinners to lively nights.",
-    shape: "rounded",
-    cols: "grid-cols-1 sm:grid-cols-2",
-    aspect: "aspect-[1.8/1]",
-    shots: [
-      { src: "/images/red-bar.jpg", alt: "The glowing bar counter at night" },
-      { src: "/images/arches-night.jpg", alt: "Lit arches over the garden terrace after dark" },
-    ],
-  },
-  {
-    id: "celebrations",
-    tab: "Celebrations",
-    plain: "Make It an",
-    accent: "Amaare Moment",
-    text: "Birthdays, gatherings, and occasions worth raising a glass to.",
-    shape: "arch",
-    cols: "grid-cols-2 lg:grid-cols-4",
-    aspect: "aspect-[1/1.2]",
-    shots: [
-      { src: "/images/girl-cocktail.jpg", alt: "Guest with a cocktail" },
-      { src: "/images/girl-yellow.jpg", alt: "Guest posing in the dining room" },
-      { src: "/images/girl-drink.jpg", alt: "Guest raising a drink" },
-      null, // placeholder: birthday / group table photo
-    ],
-  },
+const tabs = [
+  { id: "the-space", label: "The Space" },
+  { id: "food-drinks", label: "Food & Drinks" },
+  { id: "the-evenings", label: "The Evenings" },
+  { id: "celebrations", label: "Celebrations" },
 ];
+
+function SectionHead({ n, plain, accent, text }: { n: string; plain: string; accent: string; text: string }) {
+  return (
+    <Reveal className="mb-12 grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-end sm:gap-10">
+      <p className="accent text-6xl leading-none text-sage/40">{n}</p>
+      <Display plain={plain} accent={accent} className="text-4xl sm:text-5xl" />
+      <p className="max-w-xs text-sm leading-relaxed text-muted sm:text-right">{text}</p>
+    </Reveal>
+  );
+}
 
 export default function GalleryPage() {
   return (
     <>
-      <section>
-        <Container className="pt-16 text-center sm:pt-20">
-          <Eyebrow className="mb-5">Gallery</Eyebrow>
-          <Title as="h1" plain="The Amaare" accent="Experience" className="text-5xl sm:text-6xl lg:text-7xl" />
-          <p className="mt-5 text-[0.95rem] text-muted">Food, ambience, people, and moments around the table.</p>
-          <GalleryTabs tabs={sections.map((s) => ({ id: s.id, label: s.tab }))} />
+      <PageHero image="/images/red-bar.jpg" kicker="Gallery" plain="The Amaare" accent="Experience">
+        <p>Food, ambience, people, and moments around the table.</p>
+      </PageHero>
+
+      <GalleryTabs tabs={tabs} />
+
+      {/* 01 The Space */}
+      <section id="the-space" className="scroll-mt-32">
+        <Container className="py-24 sm:py-32">
+          <SectionHead n="01" plain="Settle In." accent="Stay Awhile." text="A setting made for easy conversations and memorable evenings." />
+          <div className="grid grid-cols-12 gap-4 sm:gap-6">
+            <Reveal className="col-span-12 sm:col-span-7">
+              <Img src="/images/girl-brown.jpg" alt="Guest in Amaare's garden dining room by the fountain" className="aspect-[4/3.4]" />
+            </Reveal>
+            <div className="col-span-12 grid gap-4 sm:col-span-5 sm:gap-6">
+              <Reveal delay={120}>
+                <Img src="/images/hero-statue.jpg" alt="The carved stone face lit at dusk" className="aspect-[5/3]" sizes="40vw" pos="center 30%" />
+              </Reveal>
+              <Reveal delay={220}>
+                <Img src="/images/domes.jpg" alt="Glass cloches and a table lamp on a striped banquette" className="aspect-[5/3]" sizes="40vw" />
+              </Reveal>
+            </div>
+          </div>
         </Container>
       </section>
 
-      {sections.map((s) => (
-        <section key={s.id} id={s.id} className="scroll-mt-24">
-          <Container className="py-10 sm:py-12">
-            <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-line pb-4">
-              <Title plain={s.plain} accent={s.accent} className="text-3xl sm:text-4xl" accentClass="text-ink" />
-              <p className="text-sm text-muted">{s.text}</p>
-            </div>
-            <div className={`mt-6 grid gap-4 ${s.cols}`}>
-              {s.shots.map((shot, i) =>
-                shot ? (
-                  <Photo
-                    key={shot.src}
-                    src={shot.src}
-                    alt={shot.alt}
-                    shape={s.shape}
-                    className={`${s.aspect} w-full`}
-                    sizes="(min-width: 1024px) 25vw, 50vw"
-                  />
-                ) : (
-                  <div
-                    key={`placeholder-${i}`}
-                    className={`arch flex ${s.aspect} w-full items-center justify-center bg-sand p-6 text-center`}
-                  >
-                    <span className="eyebrow text-[0.55rem] text-muted">Birthday / group table photo</span>
-                  </div>
-                ),
-              )}
-            </div>
-          </Container>
-        </section>
-      ))}
-
-      <section>
-        <Container className="py-16">
-          <div className="flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-forest px-8 py-10 text-paper sm:px-12">
-            <div>
-              <Title plain="Come Experience" accent="Amaare" className="text-4xl" accentClass="text-peach" />
-              <p className="mt-2 text-sm text-paper/70">Your table is waiting.</p>
-            </div>
-            <Button href="/contact">Reserve Your Table</Button>
+      {/* 02 Food & Drinks */}
+      <section id="food-drinks" className="scroll-mt-32 bg-linen">
+        <Container className="py-24 sm:py-32">
+          <SectionHead n="02" plain="Made to Be" accent="Savoured" text="Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for." />
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {[
+              ["/images/food-plate.jpg", "A plated signature dish", ""],
+              ["/images/green-dish.jpg", "A green herb dish being served", "lg:mt-16"],
+              ["/images/drink-amber.jpg", "An amber cocktail on a coaster", ""],
+              ["/images/pour.jpg", "A bartender pouring into a mixing glass", "lg:mt-16"],
+            ].map(([src, alt, offset], i) => (
+              <Reveal key={src} delay={i * 100} className={offset}>
+                <Img src={src} alt={alt} className="aspect-[3/4]" sizes="(min-width: 1024px) 25vw, 50vw" />
+              </Reveal>
+            ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 03 The Evenings */}
+      <section id="the-evenings" className="scroll-mt-32 bg-olive text-cream">
+        <Container className="py-24 sm:py-32">
+          <Reveal className="mb-12 grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-end sm:gap-10">
+            <p className="accent text-6xl leading-none text-sage-pale/40">03</p>
+            <Display plain="Good Food. Good Music." accent="Good Company." className="text-4xl sm:text-5xl" accentClass="text-sage-pale" />
+            <p className="max-w-xs text-sm text-cream/60 sm:text-right">From relaxed dinners to lively nights.</p>
+          </Reveal>
+          <div className="grid gap-4 sm:gap-6">
+            <Reveal>
+              <Img src="/images/arches-night.jpg" alt="Lit arches over the garden terrace after dark" className="aspect-[16/7]" sizes="100vw" />
+            </Reveal>
+            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+              <Reveal delay={100}>
+                <Img src="/images/event-arches.jpg" alt="The garden terrace under lit arches" className="aspect-[16/10]" />
+              </Reveal>
+              <Reveal delay={200}>
+                <Img src="/images/event-glass.jpg" alt="A drink being stirred at the bar" className="aspect-[16/10]" />
+              </Reveal>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 04 Celebrations */}
+      <section id="celebrations" className="scroll-mt-32">
+        <Container className="py-24 sm:py-32">
+          <SectionHead n="04" plain="Make It an" accent="Amaare Moment" text="Birthdays, gatherings, and occasions worth raising a glass to." />
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {[
+              ["/images/girl-cocktail.jpg", "Guest with a cocktail"],
+              ["/images/girl-yellow.jpg", "Guest in the dining room"],
+              ["/images/girl-drink.jpg", "Guest raising a drink"],
+            ].map(([src, alt], i) => (
+              <Reveal key={src} delay={i * 100} className={i % 2 ? "lg:mt-16" : ""}>
+                <Img src={src} alt={alt} className="aspect-[3/4]" sizes="(min-width: 1024px) 25vw, 50vw" pos="center 15%" />
+              </Reveal>
+            ))}
+            {/* Placeholder until the birthday / group table photo arrives */}
+            <Reveal delay={300} className="lg:mt-16">
+              <div className="flex aspect-[3/4] flex-col items-center justify-center gap-5 border border-dashed border-sage/50 bg-linen p-6 text-center text-sage">
+                <Brand kind="mark" className="w-10" />
+                <span className="kicker text-[0.58rem]">Birthday / group table photo</span>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-line">
+        <Container className="flex flex-wrap items-center justify-between gap-8 py-20">
+          <Reveal>
+            <Kicker>Your table is waiting</Kicker>
+            <Display plain="Come Experience" accent="Amaare" className="mt-5 text-5xl" />
+          </Reveal>
+          <Reveal delay={120}>
+            <Button href="/contact">Reserve Your Table</Button>
+          </Reveal>
         </Container>
       </section>
     </>

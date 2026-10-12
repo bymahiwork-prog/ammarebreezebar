@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { site } from "@/lib/site";
 
 type Field = {
@@ -18,18 +18,16 @@ type Field = {
  */
 export function EnquiryForm({
   title,
-  intro,
   fields,
   submitLabel,
   showWhatsapp = false,
-  tone = "paper",
+  dark = false,
 }: {
-  tone?: "paper" | "sand";
-  title: React.ReactNode;
-  intro?: string;
+  title: ReactNode;
   fields: Field[];
   submitLabel: string;
   showWhatsapp?: boolean;
+  dark?: boolean;
 }) {
   const [sent, setSent] = useState(false);
 
@@ -45,31 +43,32 @@ export function EnquiryForm({
     setSent(true);
   }
 
-  const input =
-    "mt-1.5 w-full rounded-lg border border-line bg-paper px-3.5 py-2.5 text-sm text-ink outline-none transition focus:border-clay focus:ring-2 focus:ring-clay/15";
+  const tone = dark
+    ? { label: "text-sage-pale", input: "border-cream/25 text-cream focus:border-sage-pale [color-scheme:dark]", note: "text-cream/50" }
+    : { label: "text-sage", input: "border-ink/25 text-ink focus:border-sage-deep", note: "text-muted" };
+  const input = `block w-full border-0 border-b bg-transparent px-0 pb-2.5 pt-2 text-[1rem] font-light outline-none transition-colors ${tone.input}`;
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className={`rounded-2xl p-6 text-ink sm:p-8 ${tone === "paper" ? "bg-paper shadow-sm" : "bg-sand"}`}
-    >
-      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
-        <div className="font-display text-3xl font-light">{title}</div>
-        <p className="text-xs text-muted">{intro ?? "Fields marked with * are required."}</p>
+    <form onSubmit={onSubmit} noValidate={false}>
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-3">
+        <div className={`display text-4xl ${dark ? "text-cream" : "text-ink"}`}>{title}</div>
+        <p className={`text-xs ${tone.note}`}>Fields marked * are required</p>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
         {fields.map((f) => (
           <label key={f.name} className={`block ${f.half ? "" : "sm:col-span-2"}`}>
-            <span className="eyebrow text-[0.6rem] text-muted">
+            <span className={`kicker text-[0.6rem] ${tone.label}`}>
               {f.label}
-              {f.required && "*"}
+              {f.required && " *"}
             </span>
             {f.type === "textarea" ? (
-              <textarea name={f.name} required={f.required} rows={4} className={input} />
+              <textarea name={f.name} required={f.required} rows={3} className={`${input} resize-none`} />
             ) : f.type === "select" ? (
-              <select name={f.name} required={f.required} className={input} defaultValue={f.options?.[0]}>
+              <select name={f.name} required={f.required} className={`${input} cursor-pointer`} defaultValue={f.options?.[0]}>
                 {f.options?.map((o) => (
-                  <option key={o}>{o}</option>
+                  <option key={o} className="text-ink">
+                    {o}
+                  </option>
                 ))}
               </select>
             ) : (
@@ -84,27 +83,30 @@ export function EnquiryForm({
           </label>
         ))}
       </div>
-      <div className="mt-6 flex flex-wrap items-center gap-3">
+      <div className="mt-12 flex flex-wrap items-center gap-4">
         <button
           type="submit"
-          className="rounded-full bg-clay px-6 py-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-paper transition-colors hover:bg-clay-dark"
+          className={`group inline-flex items-center gap-3 px-7 py-[0.95rem] text-[0.66rem] uppercase tracking-[0.28em] transition-colors ${
+            dark ? "bg-cream text-olive hover:bg-paper" : "bg-sage-deep text-paper hover:bg-olive"
+          }`}
         >
-          {submitLabel} →
+          {submitLabel}
+          <span aria-hidden className="h-px w-5 bg-current transition-all duration-300 group-hover:w-8" />
         </button>
         {showWhatsapp && (
           <a
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-ink/25 px-6 py-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors hover:border-clay hover:text-clay"
+            className={`kicker border-b pb-1 ${dark ? "border-cream/40 text-cream" : "border-ink/30 text-ink"}`}
           >
-            Or WhatsApp Us
+            Or WhatsApp us
           </a>
         )}
       </div>
       {sent && (
-        <p role="status" className="mt-4 text-sm text-forest">
-          Thank you — WhatsApp has opened with your details. Just press send and our team will get back to you.
+        <p role="status" className={`mt-6 text-sm ${dark ? "text-sage-pale" : "text-sage-deep"}`}>
+          Thank you — WhatsApp has opened with your details. Press send and our team will be in touch.
         </p>
       )}
     </form>

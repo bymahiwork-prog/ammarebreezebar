@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { posts } from "@/lib/site";
-import { Button, Container, Eyebrow, Photo, Title } from "@/components/ui";
+import { Brand } from "@/components/brand";
+import { Button, Container, Img, Kicker, Reveal } from "@/components/ui";
+import { PageHero } from "@/components/sections";
 
 export const metadata: Metadata = {
   title: "The Amaare Journal",
@@ -13,50 +15,48 @@ export default function JournalPage() {
   const [featured, ...rest] = posts;
   return (
     <>
-      <section>
-        <Container className="pt-16 text-center sm:pt-20">
-          <Eyebrow className="mb-5">Blog</Eyebrow>
-          <Title as="h1" plain="The Amaare" accent="Journal" className="text-5xl sm:text-6xl lg:text-7xl" />
-          <p className="eyebrow mt-6 text-ink/70">Food · Dining · Drinks · The Amaare Way</p>
-        </Container>
-      </section>
+      <PageHero image="/images/blog-featured.jpg" position="center 30%" kicker="Blog" plain="The Amaare" accent="Journal">
+        <p className="kicker leading-loose text-cream/75">Food · Dining · Drinks · The Amaare Way</p>
+      </PageHero>
 
       <section>
-        <Container className="py-14">
-          <Link
-            href={`/journal/${featured.slug}`}
-            className="group grid overflow-hidden rounded-2xl bg-sand md:grid-cols-2"
-          >
-            <Photo
-              src={featured.image}
-              alt=""
-              shape="square"
-              priority
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="aspect-[4/3] w-full md:aspect-auto md:min-h-80"
-            />
-            <div className="flex flex-col justify-center p-8 sm:p-12">
-              <p className="eyebrow text-[0.6rem] text-clay">Featured · {featured.tag}</p>
-              <h2 className="mt-3 font-display text-4xl font-light leading-tight group-hover:text-clay">{featured.title}</h2>
-              <p className="mt-3 text-sm text-muted">{featured.excerpt}</p>
-              <p className="eyebrow mt-6 text-[0.6rem] text-clay">Read the Story →</p>
-            </div>
-          </Link>
+        <Container className="py-24 sm:py-32">
+          <Reveal>
+            <Link href={`/journal/${featured.slug}`} className="group grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+              <Img src={featured.image} alt="" priority className="aspect-[4/3] lg:col-span-7" sizes="(min-width: 1024px) 58vw, 100vw" />
+              <div className="lg:col-span-5">
+                <Kicker>Featured · {featured.tag}</Kicker>
+                <h2 className="display mt-6 text-5xl leading-[1.08] transition-colors group-hover:text-sage-deep">{featured.title}</h2>
+                <p className="mt-6 max-w-sm leading-[1.85] text-muted">{featured.excerpt}</p>
+                <p className="kicker mt-9 inline-block border-b border-sage-deep/50 pb-2 text-sage-deep">Read the Story</p>
+              </div>
+            </Link>
+          </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-x-5 gap-y-10 lg:grid-cols-4">
-            {rest.map((p) => (
-              <Link key={p.slug} href={`/journal/${p.slug}`} className="group">
-                <Photo src={p.image} alt="" shape="arch" className="aspect-square w-full" sizes="(min-width: 1024px) 25vw, 50vw" />
-                <p className="eyebrow mt-4 text-[0.58rem] text-clay">{p.tag}</p>
-                <h3 className="mt-1 font-display text-2xl leading-snug group-hover:text-clay">{p.title}</h3>
-              </Link>
-            ))}
-            <div className="arch flex aspect-square w-full flex-col items-center justify-center bg-forest p-6 text-center text-paper lg:aspect-auto">
-              <p className="font-display text-2xl">Read enough?</p>
-              <p className="font-display text-2xl italic text-peach">Come dine with us.</p>
-              <Button href="/contact" className="mt-5 !px-5 !py-2.5">
-                Reserve a Table
-              </Button>
+          <div className="mt-28 border-t border-ink/15 pt-16">
+            <div className="grid gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+              {rest.map((p, i) => (
+                <Reveal key={p.slug} delay={(i % 3) * 100}>
+                  <Link href={`/journal/${p.slug}`} className="group block">
+                    <Img src={p.image} alt="" className="aspect-[4/3]" sizes="(min-width: 1024px) 33vw, 50vw" pos="center 20%" />
+                    <div className="mt-6 flex items-baseline gap-4">
+                      <span className="accent text-xl text-sage">{String(i + 2).padStart(2, "0")}</span>
+                      <p className="kicker text-[0.6rem] text-muted">{p.tag}</p>
+                    </div>
+                    <h3 className="display mt-3 text-[1.8rem] leading-snug transition-colors group-hover:text-sage-deep">{p.title}</h3>
+                  </Link>
+                </Reveal>
+              ))}
+              <Reveal delay={200}>
+                <div className="relative flex aspect-[4/3] flex-col items-center justify-center overflow-hidden bg-olive p-8 text-center text-cream sm:aspect-auto sm:h-full">
+                  <Brand kind="mark" className="w-10 text-sage-pale" />
+                  <p className="display mt-6 text-3xl">Read enough?</p>
+                  <p className="accent text-3xl text-sage-pale">Come dine with us.</p>
+                  <Button href="/contact" variant="light" className="mt-8">
+                    Reserve a Table
+                  </Button>
+                </div>
+              </Reveal>
             </div>
           </div>
         </Container>

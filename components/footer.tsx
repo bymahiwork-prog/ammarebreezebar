@@ -1,62 +1,62 @@
 import Link from "next/link";
-import { site, directionsUrl } from "@/lib/site";
+import { site, directionsUrl, nav } from "@/lib/site";
+import { Brand } from "./brand";
 import { Container } from "./ui";
-
-const explore = [
-  { href: "/about", label: "About Us" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/franchise", label: "Franchise" },
-  { href: "/journal", label: "The Journal" },
-];
 
 export function Footer() {
   return (
-    <footer className="bg-forest text-paper/80">
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="font-display text-2xl text-paper">amaaré</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-paper/60">
-            Daytime glasshouse, sunset cocktails and easy evenings in South Delhi. Amaare by Zammaya.
-          </p>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-peach">Explore</p>
-          <ul className="space-y-2 text-sm">
-            {explore.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="hover:text-paper">
-                  {l.label}
-                </Link>
+    <footer className="relative overflow-hidden bg-olive-deep text-cream/75">
+      <Brand kind="mark" className="pointer-events-none absolute -right-24 -top-10 w-[420px] text-cream/[0.035]" />
+      <Container className="relative pt-20 pb-10">
+        <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+          <div>
+            <Brand kind="full" label={site.name} className="w-[150px] text-sage-pale" />
+            <p className="mt-8 max-w-[18rem] text-sm leading-relaxed text-cream/55">
+              Daytime glasshouse, sunset cocktails and easy evenings in South Delhi. Amaare by Zammaya.
+            </p>
+          </div>
+          <div>
+            <p className="kicker mb-6 text-sage-pale">Explore</p>
+            <ul className="space-y-3 text-sm">
+              {nav.slice(1).map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="transition-colors hover:text-cream">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="kicker mb-6 text-sage-pale">Visit</p>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-cream">
+                  {site.address}
+                </a>
               </li>
-            ))}
-          </ul>
+              <li>
+                <a href={site.phoneHref} className="hover:text-cream">
+                  {site.phone}
+                </a>
+              </li>
+              <li>{site.hours}</li>
+            </ul>
+          </div>
+          <div>
+            <p className="kicker mb-6 text-sage-pale">Follow</p>
+            <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-cream">
+              Instagram
+              <br />
+              <span className="text-cream/50">{site.instagram}</span>
+            </a>
+          </div>
         </div>
-        <div>
-          <p className="eyebrow mb-4 text-peach">Visit</p>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a href={directionsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-paper">
-                {site.area}
-              </a>
-            </li>
-            <li>
-              <a href={site.phoneHref} className="hover:text-paper">
-                {site.phone}
-              </a>
-            </li>
-            <li>{site.hours}</li>
-          </ul>
-        </div>
-        <div>
-          <p className="eyebrow mb-4 text-peach">Follow</p>
-          <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-paper">
-            Instagram · {site.instagram}
-          </a>
+        <div className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-cream/10 pt-8 text-xs text-cream/40">
+          <p>© {site.name}. All rights reserved.</p>
+          <p className="kicker text-[0.6rem]">Adchini · New Delhi</p>
         </div>
       </Container>
-      <div className="border-t border-paper/10">
-        <Container className="py-6 text-xs text-paper/50">© {site.name}. All rights reserved.</Container>
-      </div>
     </footer>
   );
 }

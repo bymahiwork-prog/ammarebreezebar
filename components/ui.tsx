@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
-type BtnVariant = "solid" | "outline" | "light" | "outline-light";
+type BtnVariant = "solid" | "line" | "light" | "line-light";
 
-const btnStyles: Record<BtnVariant, string> = {
-  solid: "bg-clay text-paper hover:bg-clay-dark",
-  outline: "border border-ink/30 text-ink hover:border-clay hover:text-clay",
-  light: "bg-paper text-forest hover:bg-sand",
-  "outline-light": "border border-paper/50 text-paper hover:bg-paper/10",
+const btn: Record<BtnVariant, string> = {
+  solid: "bg-sage-deep text-paper hover:bg-olive",
+  line: "border border-ink/35 text-ink hover:bg-ink hover:text-paper hover:border-ink",
+  light: "bg-cream text-olive hover:bg-paper",
+  "line-light": "border border-cream/50 text-cream hover:bg-cream hover:text-olive hover:border-cream",
 };
 
 export function Button({
@@ -22,89 +22,131 @@ export function Button({
   variant?: BtnVariant;
   className?: string;
 }) {
-  const external = href.startsWith("http") || href.startsWith("tel:");
-  const cls = `inline-flex items-center justify-center rounded-full px-6 py-3 text-[0.68rem] font-medium uppercase tracking-[0.2em] transition-colors ${btnStyles[variant]} ${className}`;
-  if (external) {
+  const cls = `group inline-flex items-center justify-center gap-3 px-7 py-[0.95rem] text-[0.66rem] font-normal uppercase tracking-[0.28em] transition-colors duration-300 ${btn[variant]} ${className}`;
+  const inner = (
+    <>
+      {children}
+      <span aria-hidden className="inline-block h-px w-5 bg-current transition-all duration-300 group-hover:w-8" />
+    </>
+  );
+  if (/^(https?:|tel:|mailto:)/.test(href)) {
     return (
       <a href={href} className={cls} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-        {children}
+        {inner}
       </a>
     );
   }
   return (
     <Link href={href} className={cls}>
-      {children}
+      {inner}
     </Link>
   );
 }
 
+/** Understated text link with a drawn underline. */
 export function TextLink({ href, children, light = false }: { href: string; children: ReactNode; light?: boolean }) {
   return (
     <Link
       href={href}
-      className={`eyebrow inline-block border-b pb-1 font-medium transition-colors ${
-        light ? "border-peach/60 text-peach hover:text-paper" : "border-clay/50 text-clay hover:text-clay-dark"
-      }`}
+      className={`kicker group relative inline-block pb-2 ${light ? "text-sage-pale" : "text-sage-deep"}`}
     >
       {children}
+      <span
+        aria-hidden
+        className="absolute bottom-0 left-0 h-px w-full origin-left bg-current opacity-50 transition-transform duration-500 group-hover:scale-x-[0.4]"
+      />
     </Link>
   );
 }
 
-export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <p className={`eyebrow text-muted ${className}`}>{children}</p>;
+export function Kicker({ children, className = "", light = false }: { children: ReactNode; className?: string; light?: boolean }) {
+  return (
+    <p className={`kicker flex items-center gap-4 ${light ? "text-sage-pale" : "text-sage"} ${className}`}>
+      <span aria-hidden className="h-px w-8 bg-current" />
+      {children}
+    </p>
+  );
 }
 
-/** Heading with an italic accent part, e.g. "More Than" + "Just a Meal". */
-export function Title({
+/** Display heading: Gilda for the plain words, Cormorant italic for the accent. */
+export function Display({
   plain,
   accent,
   as: Tag = "h2",
   className = "",
-  accentClass = "text-clay",
+  accentClass = "text-sage",
+  breakAccent = false,
 }: {
   plain: string;
   accent?: string;
   as?: "h1" | "h2" | "h3";
   className?: string;
   accentClass?: string;
+  breakAccent?: boolean;
 }) {
   return (
-    <Tag className={`font-display font-light leading-[1.05] tracking-[-0.01em] ${className}`}>
+    <Tag className={`display ${className}`}>
       {plain}
       {accent && (
         <>
-          {" "}
-          <em className={`font-light ${accentClass}`}>{accent}</em>
+          {breakAccent ? <br /> : " "}
+          <span className={`accent ${accentClass}`}>{accent}</span>
         </>
       )}
     </Tag>
   );
 }
 
-export function Photo({
+export function Img({
   src,
   alt,
-  shape = "rounded",
   className = "",
-  sizes = "(min-width: 1024px) 33vw, 100vw",
+  sizes = "(min-width: 1024px) 50vw, 100vw",
   priority = false,
+  zoom = true,
+  pos,
 }: {
   src: string;
   alt: string;
-  shape?: "arch" | "rounded" | "square";
   className?: string;
   sizes?: string;
   priority?: boolean;
+  zoom?: boolean;
+  /** CSS object-position, e.g. "center 20%" to keep faces in frame. */
+  pos?: string;
 }) {
-  const radius = shape === "arch" ? "arch" : shape === "rounded" ? "rounded-2xl" : "";
   return (
-    <div className={`relative overflow-hidden bg-sand ${radius} ${className}`}>
-      <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+    <div className={`group/img relative overflow-hidden bg-linen ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        style={pos ? { objectPosition: pos } : undefined}
+        className={`object-cover ${zoom ? "transition-transform duration-[1400ms] ease-out group-hover/img:scale-[1.04]" : ""}`}
+      />
     </div>
   );
 }
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full max-w-[1240px] px-5 sm:px-10 ${className}`}>{children}</div>;
+}
+
+/** Wrapper that fades its child in on scroll. */
+export function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <div data-reveal className={className} style={{ "--d": `${delay}ms` } as CSSProperties}>
+      {children}
+    </div>
+  );
 }

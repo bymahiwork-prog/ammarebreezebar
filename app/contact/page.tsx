@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { site, directionsUrl, nearby } from "@/lib/site";
-import { Container, Eyebrow, Title } from "@/components/ui";
-import { MapEmbed, TableAwaits } from "@/components/sections";
+import { Brand } from "@/components/brand";
+import { Container, Kicker, Reveal } from "@/components/ui";
+import { MapEmbed, PageHero, VisitList } from "@/components/sections";
 import { EnquiryForm } from "@/components/enquiry-form";
 
 export const metadata: Metadata = {
@@ -11,62 +12,44 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const details = [
-    { k: "Call Us", v: site.phone, href: site.phoneHref },
-    { k: "Email Us", v: site.email },
-    { k: "Opening Hours", v: site.hours },
-  ];
-
   return (
     <>
-      <section>
-        <Container className="pt-16 text-center sm:pt-20">
-          <Eyebrow className="mb-5">Contact</Eyebrow>
-          <Title as="h1" plain="Come Dine" accent="With Us" className="text-5xl sm:text-6xl lg:text-7xl" />
-          <p className="mx-auto mt-5 max-w-md text-[0.95rem] leading-relaxed text-muted">
-            Planning dinner, a celebration, or simply looking for your next favourite table? We&apos;d love to welcome you.
-          </p>
-        </Container>
-      </section>
+      <PageHero image="/images/hero-statue.jpg" position="center 35%" kicker="Contact" plain="Come Dine" accent="With Us">
+        <p>Planning dinner, a celebration, or simply looking for your next favourite table? We&apos;d love to welcome you.</p>
+      </PageHero>
 
       <section>
-        <Container className="grid gap-6 py-14 lg:grid-cols-2">
-          <div className="flex flex-col rounded-2xl bg-forest p-8 text-paper">
-            <p className="eyebrow text-[0.6rem] text-peach">Let&apos;s Connect</p>
-            <h2 className="mt-3 font-display text-3xl">{site.name}</h2>
-            <p className="mt-1 text-sm text-paper/60">{site.address}</p>
-            <dl className="mt-6 divide-y divide-paper/10 border-y border-paper/10 text-sm">
-              {details.map((d) => (
-                <div key={d.k} className="flex items-center justify-between gap-4 py-4">
-                  <dt className="eyebrow text-[0.58rem] text-paper/50">{d.k}</dt>
-                  <dd>
-                    {d.href ? (
-                      <a href={d.href} className="hover:text-peach">
-                        {d.v}
-                      </a>
-                    ) : (
-                      d.v
-                    )}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <MapEmbed className="mt-6 flex-1" />
-            <a
-              href={directionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="eyebrow mt-4 self-start text-[0.6rem] text-peach hover:text-paper"
-            >
-              Get Directions →
-            </a>
-          </div>
+        <Container className="grid gap-16 py-24 sm:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+          <Reveal>
+            <div className="relative overflow-hidden bg-olive p-8 text-cream sm:p-12">
+              <Brand kind="mark" className="pointer-events-none absolute -right-12 -top-12 w-56 text-cream/[0.05]" />
+              <Kicker light>Let&apos;s Connect</Kicker>
+              <h2 className="display mt-6 text-4xl">{site.name}</h2>
+              <div className="mt-10">
+                <VisitList light />
+              </div>
+              <div className="mt-4 flex items-baseline gap-4 text-[0.95rem]">
+                <span className="kicker shrink-0 text-sage-pale">Email</span>
+                <span aria-hidden className="mb-1 flex-1 border-b border-dotted border-cream/25" />
+                <span>{site.email}</span>
+              </div>
+              <MapEmbed className="mt-10 h-64" />
+              <a
+                href={directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="kicker mt-6 inline-block border-b border-cream/40 pb-1 text-cream hover:text-sage-pale"
+              >
+                Get Directions →
+              </a>
+            </div>
+          </Reveal>
 
-          <EnquiryForm
-              tone="sand"
+          <Reveal delay={150}>
+            <EnquiryForm
               title={
                 <>
-                  Make an <em className="text-clay">Enquiry</em>
+                  Make an <span className="accent text-sage">Enquiry</span>
                 </>
               }
               submitLabel="Send Enquiry"
@@ -88,23 +71,23 @@ export default function ContactPage() {
                 { name: "message", label: "Message", type: "textarea" },
               ]}
             />
-        </Container>
-
-        <Container className="pb-20">
-          <div className="border-b border-line pb-8">
-            <Eyebrow className="mb-4">Easy to Reach From</Eyebrow>
-            <ul className="flex flex-wrap gap-2">
-              {nearby.map((n) => (
-                <li key={n} className="rounded-full border border-line px-4 py-1.5 text-xs text-ink/80">
-                  {n}
-                </li>
-              ))}
-            </ul>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
-      <TableAwaits />
+      <section className="border-t border-line bg-linen">
+        <Container className="flex flex-wrap items-center gap-x-10 gap-y-5 py-12">
+          <Kicker>Easy to reach from</Kicker>
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {nearby.map((n, i) => (
+              <li key={n} className="flex items-center gap-6">
+                {i > 0 && <span aria-hidden className="h-1 w-1 rounded-full bg-sage" />}
+                <span className="display text-xl">{n}</span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
     </>
   );
 }

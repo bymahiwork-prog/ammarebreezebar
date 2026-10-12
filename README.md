@@ -19,8 +19,9 @@ Open http://localhost:3000.
 | Events on the homepage | `lib/site.ts` → `events` |
 | Blog post titles and images | `lib/site.ts` → `posts` |
 | FAQs | `lib/site.ts` → `faqs` |
-| Colours and fonts | `app/globals.css` |
+| Colours and fonts | `app/globals.css` (sage from the logo, cream, deep olive) |
 | Photos | `public/images/` |
+| Logo (vector, recolourable) | `public/brand/` |
 
 ## Still to fill in
 

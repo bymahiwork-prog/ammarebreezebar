@@ -48,7 +48,7 @@ export const posts: Post[] = [
     tag: "Dining",
     title: "Best Restaurants in South Delhi for Dinner",
     excerpt: "Where to book when you want good food, a great room and an evening that doesn't rush.",
-    image: "/images/blog-featured.jpg",
+    image: "/images/green-dish.jpg",
   },
   {
     slug: "best-date-night-restaurants-in-south-delhi",
