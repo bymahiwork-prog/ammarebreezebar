@@ -116,7 +116,7 @@ export function Img({
   pos?: string;
 }) {
   return (
-    <div className={`group/img relative overflow-hidden bg-linen ${className}`}>
+    <div className={`group/img relative overflow-hidden bg-olive ${className}`}>
       <Image
         src={src}
         alt={alt}

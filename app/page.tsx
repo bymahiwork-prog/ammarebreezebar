@@ -76,27 +76,29 @@ export default function Home() {
       </section>
 
       {/* ——— Welcome ——— */}
-      <section id="welcome" className="scroll-mt-20">
+      <section id="welcome" className="scroll-mt-20 bg-olive-deep text-cream">
         <Container className="max-w-4xl py-32 text-center sm:py-40">
           <Reveal>
-            <Ornament />
+            <Ornament light />
             <p className="display mt-12 text-[2.1rem] leading-[1.3] sm:text-[3rem]">
-              More than a meal — <span className="accent text-sage">a whole evening.</span>
+              More than a meal — <span className="accent text-sage-pale">a whole evening.</span>
             </p>
-            <p className="mx-auto mt-8 max-w-xl text-[1.05rem] leading-[1.9] text-muted">
+            <p className="mx-auto mt-8 max-w-xl text-[1.05rem] leading-[1.9] text-cream/70">
               At Amaare, dining is about the whole experience. From thoughtfully crafted plates and refreshing cocktails to
               an atmosphere made for conversations, celebrations, and unhurried evenings — every visit is designed to feel
               effortless.
             </p>
             <div className="mt-12">
-              <TextLink href="/about">Discover Amaare</TextLink>
+              <TextLink href="/about" light>
+                Discover Amaare
+              </TextLink>
             </div>
           </Reveal>
         </Container>
       </section>
 
       {/* ——— Day to night ——— */}
-      <section>
+      <section className="bg-olive-deep text-cream">
         <Container className="grid gap-6 pb-32 sm:grid-cols-3 sm:pb-40">
           {hours.map((h, i) => (
             <Reveal key={h.title} delay={i * 140} className={i === 1 ? "sm:mt-20" : ""}>
@@ -104,7 +106,7 @@ export default function Home() {
                 <Img src={h.image} alt={h.alt} pos={h.pos} className="aspect-[3/4.2]" sizes="(min-width: 640px) 33vw, 100vw" />
                 <figcaption className="mt-7 text-center">
                   <p className="display text-[1.9rem]">{h.title}</p>
-                  <p className="kicker mt-3 text-[0.6rem] text-muted">{h.sub}</p>
+                  <p className="kicker mt-3 text-[0.6rem] text-sage-pale">{h.sub}</p>
                 </figcaption>
               </figure>
             </Reveal>
@@ -113,14 +115,14 @@ export default function Home() {
       </section>
 
       {/* ——— From the kitchen ——— */}
-      <section id="kitchen" className="scroll-mt-20 bg-linen py-28 sm:py-36">
+      <section id="kitchen" className="scroll-mt-20 bg-olive py-28 text-cream sm:py-36">
         <Container>
           <Reveal className="flex flex-wrap items-end justify-between gap-8">
             <div>
-              <Kicker>From the Kitchen</Kicker>
-              <Display plain="Made for" accent="the Table" breakAccent className="mt-6 text-5xl sm:text-[4.4rem]" />
+              <Kicker light>From the Kitchen</Kicker>
+              <Display plain="Made for" accent="the Table" breakAccent className="mt-6 text-5xl sm:text-[4.4rem]" accentClass="text-sage-pale" />
             </div>
-            <p className="max-w-sm leading-[1.85] text-muted">
+            <p className="max-w-sm leading-[1.85] text-cream/70">
               Thoughtfully crafted. Made to be shared. A menu designed for everything from casual dinners to long evenings
               with friends.
             </p>
@@ -135,13 +137,13 @@ export default function Home() {
               <li key={d.name} className="w-[72vw] shrink-0 snap-start sm:w-[340px]">
                 <Img src={d.image} alt={d.name} className="aspect-[2/3]" sizes="340px" />
                 <p className="display mt-6 text-2xl">{d.name}</p>
-                <p className="mt-1.5 text-sm text-muted">{d.note}</p>
+                <p className="mt-1.5 text-sm text-cream/60">{d.note}</p>
               </li>
             ))}
           </ul>
         </Reveal>
         <Container>
-          <p className="kicker mt-6 text-[0.58rem] text-muted">Scroll for more →</p>
+          <p className="kicker mt-6 text-[0.58rem] text-sage-pale">Scroll for more →</p>
         </Container>
       </section>
 
@@ -165,7 +167,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-olive py-6 sm:py-8">
+      <section className="bg-olive-deep py-2 sm:py-3">
         <ul className="grid grid-cols-3 gap-2 px-2 sm:gap-3 sm:px-3 lg:grid-cols-6">
           {bar.map((b, i) => (
             <li key={b.image} data-reveal style={{ "--d": `${i * 80}ms` } as CSSProperties}>
@@ -199,30 +201,30 @@ export default function Home() {
       </section>
 
       {/* ——— Events, set like a menu ——— */}
-      <section>
+      <section className="bg-olive-deep text-cream">
         <Container className="max-w-5xl py-28 sm:py-36">
           <Reveal className="text-center">
-            <Kicker className="justify-center">Events</Kicker>
-            <Display plain="What's Happening" accent="at Amaare" className="mt-6 text-5xl sm:text-6xl" />
-            <p className="mx-auto mt-6 max-w-md leading-relaxed text-muted">
+            <Kicker light className="justify-center">Events</Kicker>
+            <Display plain="What's Happening" accent="at Amaare" className="mt-6 text-5xl sm:text-6xl" accentClass="text-sage-pale" />
+            <p className="mx-auto mt-6 max-w-md leading-relaxed text-cream/70">
               Special evenings, live music and seasonal experiences — there&apos;s always something happening around the
               table.
             </p>
           </Reveal>
-          <ul className="mt-16 border-t border-ink/15">
+          <ul className="mt-16 border-t border-cream/15">
             {events.map((e, i) => (
               <li
                 key={i}
                 data-reveal
                 style={{ "--d": `${i * 100}ms` } as CSSProperties}
-                className="grid items-baseline gap-3 border-b border-ink/15 py-8 sm:grid-cols-[200px_1fr_auto] sm:gap-10"
+                className="grid items-baseline gap-3 border-b border-cream/15 py-8 sm:grid-cols-[200px_1fr_auto] sm:gap-10"
               >
-                <p className="kicker text-[0.62rem] text-sage">{e.when}</p>
+                <p className="kicker text-[0.62rem] text-sage-pale">{e.when}</p>
                 <div>
                   <h3 className="display text-3xl">{e.name}</h3>
-                  <p className="mt-2 text-muted">{e.text}</p>
+                  <p className="mt-2 text-cream/60">{e.text}</p>
                 </div>
-                <Link href="/contact" className="kicker text-sage-deep hover:text-olive">
+                <Link href="/contact" className="kicker text-sage-pale hover:text-cream">
                   Enquire →
                 </Link>
               </li>
@@ -232,21 +234,23 @@ export default function Home() {
       </section>
 
       {/* ——— Location ——— */}
-      <section className="bg-linen">
+      <section className="bg-olive text-cream">
         <Container className="grid gap-16 py-28 sm:py-36 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <Kicker>Location</Kicker>
-            <Display plain="In the Heart of" accent="South Delhi" breakAccent className="mt-7 text-5xl sm:text-6xl" />
-            <p className="mt-8 max-w-md leading-[1.85] text-muted">
+            <Kicker light>Location</Kicker>
+            <Display plain="In the Heart of" accent="South Delhi" breakAccent className="mt-7 text-5xl sm:text-6xl" accentClass="text-sage-pale" />
+            <p className="mt-8 max-w-md leading-[1.85] text-cream/70">
               Located in Adchini — a dining destination for those looking to eat, unwind and spend time well. Easy to reach
               from Hauz Khas, Green Park, Malviya Nagar and Saket.
             </p>
             <div className="mt-12 max-w-md">
-              <VisitList />
+              <VisitList light />
             </div>
             <div className="mt-12 flex flex-wrap gap-4">
-              <Button href="/contact">Reserve Your Table</Button>
-              <Button href={directionsUrl} variant="line">
+              <Button href="/contact" variant="light">
+                Reserve Your Table
+              </Button>
+              <Button href={directionsUrl} variant="line-light">
                 Get Directions
               </Button>
             </div>
@@ -257,7 +261,7 @@ export default function Home() {
         </Container>
       </section>
 
-      <Faq />
+      <Faq dark />
       <TableAwaits image="/images/menu/amber-old-fashioned.jpg" />
     </>
   );

@@ -108,7 +108,7 @@ export function TableAwaits({ image = "/images/arches-night.jpg" }: { image?: st
 
 export function MapEmbed({ className = "" }: { className?: string }) {
   return (
-    <div className={`relative overflow-hidden bg-linen ${className}`}>
+    <div className={`relative overflow-hidden bg-olive-deep ${className}`}>
       <iframe
         title={`Map showing ${site.name} in ${site.area}`}
         src={mapEmbedUrl}
@@ -140,33 +140,39 @@ export function VisitList({ light = false }: { light?: boolean }) {
   );
 }
 
-export function Faq() {
+export function Faq({ dark = false }: { dark?: boolean }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
   };
   return (
-    <section className="bg-cream">
+    <section className={dark ? "bg-olive-deep text-cream" : "bg-cream"}>
       <Container className="grid gap-12 py-24 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
-          <Kicker>Good to Know</Kicker>
-          <Display plain="Frequently Asked" accent="Questions" breakAccent className="mt-6 text-5xl sm:text-6xl" />
+          <Kicker light={dark}>Good to Know</Kicker>
+          <Display
+            plain="Frequently Asked"
+            accent="Questions"
+            breakAccent
+            className="mt-6 text-5xl sm:text-6xl"
+            accentClass={dark ? "text-sage-pale" : "text-sage"}
+          />
         </Reveal>
         <Reveal delay={120}>
-          <div className="border-t border-ink/15">
+          <div className={`border-t ${dark ? "border-cream/15" : "border-ink/15"}`}>
             {faqs.map((f, i) => (
-              <details key={f.q} className="group border-b border-ink/15" open={i === 0}>
+              <details key={f.q} className={`group border-b ${dark ? "border-cream/15" : "border-ink/15"}`} open={i === 0}>
                 <summary className="flex cursor-pointer items-start justify-between gap-8 py-7">
                   <span className="flex gap-6">
-                    <span className="accent pt-1 text-xl text-sage">{String(i + 1).padStart(2, "0")}</span>
+                    <span className={`accent pt-1 text-xl ${dark ? "text-sage-pale" : "text-sage"}`}>{String(i + 1).padStart(2, "0")}</span>
                     <span className="display text-[1.45rem] leading-snug">{f.q}</span>
                   </span>
-                  <span aria-hidden className="faq-icon mt-1 text-2xl font-light text-sage transition-transform duration-300">
+                  <span aria-hidden className={`faq-icon mt-1 text-2xl font-light transition-transform duration-300 ${dark ? "text-sage-pale" : "text-sage"}`}>
                     +
                   </span>
                 </summary>
-                <p className="-mt-2 pb-7 pl-12 leading-relaxed text-muted">{f.a}</p>
+                <p className={`-mt-2 pb-7 pl-12 leading-relaxed ${dark ? "text-cream/65" : "text-muted"}`}>{f.a}</p>
               </details>
             ))}
           </div>
