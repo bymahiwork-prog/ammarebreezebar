@@ -65,7 +65,7 @@ const restaurantSchema = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${bodoni.variable} ${manrope.variable} antialiased`}>
-      <body className="flex min-h-screen flex-col">
+      <body id="top" className="flex min-h-screen flex-col">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }} />
         <Header />
         <main className="flex-1">{children}</main>

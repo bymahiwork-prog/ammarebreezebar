@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { bar, events, kitchen, directionsUrl, site } from "@/lib/site";
+import { bar, kitchen, directionsUrl, site } from "@/lib/site";
 import { Brand } from "@/components/brand";
 import { Container, Reveal } from "@/components/ui";
 import { Faq, MapEmbed, VisitList } from "@/components/sections";
@@ -170,75 +170,104 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 3 · Food — dark, auto-sliding carousel like Seezen's signature collection */}
-      <section id="menu" className="scroll-mt-20 overflow-hidden bg-olive py-16">
-        <CenterHead label="Made for the Table" title="From the Amaare Kitchen" dark />
-        <Reveal className="mx-auto mt-4 max-w-xl px-5 text-center">
-          <p className="leading-[1.75] text-cream/75">
-            Thoughtfully crafted. Made to be shared. Explore a menu designed for everything from casual dinners to long
-            evenings with friends.
-          </p>
-        </Reveal>
-        <div className="group mt-10">
-          <ul className="flex w-max animate-[marquee_55s_linear_infinite] gap-6 group-hover:[animation-play-state:paused]">
+      {/* 3 · Food — arch-framed dishes sliding slowly, in the brand's own style */}
+      <section id="menu" className="relative scroll-mt-20 overflow-hidden bg-olive py-16">
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-24 -top-20 w-[340px] opacity-[0.035]" />
+        <Container className="relative">
+          <Reveal className="grid items-end gap-6 lg:grid-cols-[1fr_auto]">
+            <div>
+              <div className="flex items-center gap-4">
+                <Brand kind="mark" tone="cream" className="w-7 opacity-70" />
+                <Label dark>Cravings</Label>
+              </div>
+              <h2 className="display mt-4 text-[2.6rem] leading-[1.02] text-cream sm:text-[3.6rem]">
+                Made for <span className="accent text-sage-pale">the Table</span>
+              </h2>
+            </div>
+            <div className="max-w-sm lg:pb-2">
+              <p className="text-[0.98rem] leading-[1.75] text-cream/75">
+                Thoughtfully crafted. Made to be shared. Explore a menu designed for everything from casual dinners to long
+                evenings with friends.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+
+        <div className="group relative mt-12">
+          <ul className="flex w-max animate-[marquee_70s_linear_infinite] gap-8 pl-8 group-hover:[animation-play-state:paused]">
             {[...kitchen, ...kitchen].map((d, n) => (
-              <li
-                key={`${d.name}-${n}`}
-                aria-hidden={n >= kitchen.length}
-                className="flex h-[440px] w-[300px] shrink-0 flex-col overflow-hidden rounded-[18px] bg-paper shadow-sm transition-transform duration-300 hover:-translate-y-1"
-              >
-                <Photo src={d.image} alt={n >= kitchen.length ? "" : d.name} className="h-[310px] w-full" sizes="300px" />
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="display text-xl text-olive">{d.name}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{d.note}</p>
+              <li key={`${d.name}-${n}`} aria-hidden={n >= kitchen.length} className="w-[250px] shrink-0 sm:w-[270px]">
+                <div className="relative">
+                  <div aria-hidden className="absolute -inset-2 rounded-t-full border border-sage-pale/30" />
+                  <Photo
+                    src={d.image}
+                    alt={n >= kitchen.length ? "" : d.name}
+                    className="aspect-[3/4.2] rounded-t-full"
+                    sizes="270px"
+                  />
+                </div>
+                <div className="mt-6 text-center">
+                  <p className="kicker text-[0.6rem] text-sage-pale/80">{String((n % kitchen.length) + 1).padStart(2, "0")}</p>
+                  <h3 className="accent mt-1.5 text-[1.55rem] text-cream">{d.name}</h3>
+                  <p className="mt-1 text-[0.82rem] text-cream/60">{d.note}</p>
                 </div>
               </li>
             ))}
           </ul>
         </div>
-        <div className="mt-10 text-center">
+
+        <div className="mt-12 text-center">
           <Pill href="/gallery#food-drinks" tone="cream">
             Explore Our Menu
           </Pill>
         </div>
       </section>
 
-      {/* 4 · Drinks — spotlight card, like Seezen's signature dessert */}
-      <section className="bg-olive-deep px-4 py-16 lg:px-8">
-        <Reveal className="mx-auto grid max-w-[1240px] overflow-hidden rounded-[30px] border border-cream/10 bg-olive lg:grid-cols-2">
-          <Photo src="/images/menu/negroni.jpg" alt="A ruby-red cocktail on an Amaare coaster" className="aspect-square lg:aspect-auto lg:min-h-[520px]" sizes="(min-width:1024px) 50vw, 100vw" pos="center 55%" />
-          <div className="flex flex-col justify-center p-8 text-cream sm:p-12 lg:p-14">
-            <Label dark>Pour House</Label>
-            <h2 className="display mt-3 text-[2.6rem] leading-[1.05] sm:text-[3.6rem]">
-              Pour Something
-              <br />
-              <span className="accent text-sage-pale">Good</span>
+      {/* 4 · Drinks — arch-framed hero cocktail, text beside, small arches below */}
+      <section className="relative overflow-hidden bg-olive-deep py-16">
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -bottom-24 -right-20 w-[380px] opacity-[0.035]" />
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+          <Reveal className="relative mx-auto w-full max-w-[440px]">
+            <div aria-hidden className="absolute -inset-3 rounded-t-full border border-sage-pale/30" />
+            <Photo
+              src="/images/menu/negroni.jpg"
+              alt="A ruby-red cocktail on an Amaare coaster"
+              className="aspect-[4/5] rounded-t-full"
+              sizes="(min-width:1024px) 440px, 90vw"
+              pos="center 55%"
+            />
+            <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 whitespace-nowrap rounded-full bg-cream px-5 py-2.5 text-olive-deep shadow-lg">
+              <Brand kind="mark" tone="olive" className="w-5" />
+              <span className="kicker text-[0.6rem]">Pour House</span>
+            </div>
+          </Reveal>
+          <Reveal delay={120} className="text-cream">
+            <div className="flex items-center gap-4">
+              <Brand kind="mark" tone="cream" className="w-7 opacity-70" />
+              <Label dark>The Bar</Label>
+            </div>
+            <h2 className="display mt-4 text-[2.6rem] leading-[1.02] sm:text-[3.6rem]">
+              Pour Something <span className="accent text-sage-pale">Good</span>
             </h2>
-            <p className="mt-5 max-w-md text-[1.05rem] leading-[1.8] text-cream/80">
+            <p className="mt-5 max-w-md text-[1rem] leading-[1.8] text-cream/80">
               From refreshing cocktails to familiar favourites, our drinks are made to complement the mood, the meal, and
               the moment.
             </p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {["Cocktails", "Familiar Favourites", "Made for the Moment"].map((t) => (
-                <li key={t} className="rounded-full border border-cream/25 px-4 py-1.5 text-xs text-cream/85">
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <ul className="mt-7 grid max-w-xs grid-cols-3 gap-2.5">
+            <ul className="mt-8 grid max-w-md grid-cols-3 gap-4">
               {bar.slice(1, 4).map((b) => (
                 <li key={b.image}>
-                  <Photo src={b.image} alt={b.alt} className="aspect-square rounded-xl" sizes="100px" />
+                  <Photo src={b.image} alt={b.alt} className="aspect-[3/4] rounded-t-full" sizes="140px" />
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
+            <div className="mt-9 flex flex-wrap items-center gap-6">
               <Pill href="/gallery#food-drinks" tone="cream">
                 Explore Drinks
               </Pill>
+              <span className="kicker text-[0.62rem] text-sage-pale/80">Cocktails · Familiar Favourites</span>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </Container>
       </section>
 
       {/* 5 · Ambience — cream, numbered cards like "What makes Seezen special?" */}
@@ -294,69 +323,30 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 7 · Events — cream, 3-card grid like "Explore our menu" */}
-      <section className="bg-cream py-16">
-        <Container>
-          <CenterHead label="Events" title="What's Happening at Amaare" />
-          <Reveal className="mx-auto mt-4 max-w-2xl text-center">
-            <p className="leading-[1.75] text-ink/70">
-              From special evenings and live music to seasonal experiences, there&apos;s always something happening around the
-              table.
-            </p>
-          </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {events.map((e, n) => (
-              <Reveal key={n} delay={n * 90}>
-                <article className="overflow-hidden rounded-2xl border border-line bg-paper shadow-sm transition-shadow duration-300 hover:shadow-xl">
-                  <Photo src={e.image} alt="" className="h-[210px] w-full" sizes="(min-width:768px) 33vw, 100vw" />
-                  <div className="p-6">
-                    <p className="kicker text-[0.62rem] text-sage">{e.when}</p>
-                    <div className="mt-2 flex items-center justify-between gap-4">
-                      <h3 className="display text-[1.4rem] text-olive">{e.name}</h3>
-                      <Link
-                        href="/contact"
-                        aria-label={`Enquire about ${e.name}`}
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sage-deep text-cream transition-colors hover:bg-olive"
-                      >
-                        →
-                      </Link>
-                    </div>
-                    <p className="mt-1.5 text-sm text-muted">{e.text}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Pill href="/contact">Explore Events</Pill>
-          </div>
-        </Container>
-      </section>
-
-      {/* 8 · Location — dark */}
-      <section className="bg-olive py-16 text-cream">
+      {/* 7 · Location — cream */}
+      <section className="bg-cream py-16 text-ink">
         <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal>
-            <Label dark>Location</Label>
-            <h2 className="display mt-3 text-[2.4rem] sm:text-[3.2rem]">
-              In the Heart of <span className="accent text-sage-pale">South Delhi</span>
+            <Label>Location</Label>
+            <h2 className="display mt-3 text-[2.4rem] text-olive sm:text-[3.2rem]">
+              In the Heart of <span className="accent text-sage">South Delhi</span>
             </h2>
-            <p className="mt-5 max-w-md leading-[1.8] text-cream/80">
+            <p className="mt-5 max-w-md leading-[1.8] text-ink/75">
               Located in Adchini, Amaare Breeze Bar is a dining destination for those looking to eat, unwind and spend time
               well.
             </p>
-            <p className="mt-3 max-w-md leading-[1.8] text-cream/80">
+            <p className="mt-3 max-w-md leading-[1.8] text-ink/75">
               Conveniently accessible from Hauz Khas, Green Park, Malviya Nagar, Saket and surrounding South Delhi
               neighbourhoods.
             </p>
             <div className="mt-7 max-w-md">
-              <VisitList light />
+              <VisitList />
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Pill href={directionsUrl} tone="cream">
+              <Pill href={directionsUrl}>
                 Get Directions
               </Pill>
-              <Pill href="/contact" tone="outline">
+              <Pill href="/contact" tone="outline-dark">
                 Reserve Your Table
               </Pill>
             </div>
@@ -367,10 +357,10 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* 9 · FAQ */}
+      {/* 8 · FAQ */}
       <Faq dark />
 
-      {/* 10 · Final CTA */}
+      {/* 9 · Final CTA */}
       <section className="relative isolate overflow-hidden py-24 text-center text-cream">
         <Image src="/images/menu/amber-old-fashioned.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-olive-deep/75" />
