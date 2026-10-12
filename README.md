@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Amaare Breeze Bar — website
 
-## Getting Started
+Next.js site for Amaare Breeze Bar, Adchini, South Delhi. Six pages: Home, About, Gallery, Franchise, Journal (blog) and Contact.
 
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to change things
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | File |
+| --- | --- |
+| Address, phone, email, hours, Instagram | `lib/site.ts` |
+| Events on the homepage | `lib/site.ts` → `events` |
+| Blog post titles and images | `lib/site.ts` → `posts` |
+| FAQs | `lib/site.ts` → `faqs` |
+| Colours and fonts | `app/globals.css` |
+| Photos | `public/images/` |
 
-## Learn More
+## Still to fill in
 
-To learn more about Next.js, take a look at the following resources:
+- `[Full Address]`, `[Email Address]`, `[Opening Hours]` and the three `[Event Name]` cards in `lib/site.ts`
+- Hero day-to-night video (home page currently shows the statue photo)
+- Birthday / group table photo on the Gallery page
+- Blog article text (each post page says "coming soon")
+- Photos are cut from the design PDFs; swap in full-resolution originals in `public/images/` (same file names)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Forms
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The Contact and Franchise forms have no backend. Submitting opens WhatsApp (+91 92898 95633) with the details filled in.

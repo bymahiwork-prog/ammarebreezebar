@@ -1,0 +1,99 @@
+// Single place for Amaare's business details.
+// Replace the [bracketed] values once the client confirms them.
+
+export const site = {
+  name: "Amaare Breeze Bar",
+  shortName: "amaaré",
+  tagline: "Breeze Bar",
+  url: "https://amaarebreezebar.com",
+  area: "Adchini, South Delhi",
+  address: "[Full Address], Adchini, South Delhi",
+  phone: "+91 92898 95633",
+  phoneHref: "tel:+919289895633",
+  whatsapp: "https://wa.me/919289895633",
+  email: "[Email Address]",
+  hours: "[Opening Hours]",
+  instagram: "@amaarebreezebar_delhi",
+  instagramUrl: "https://www.instagram.com/amaarebreezebar_delhi/",
+  mapsQuery: "Amaare Breeze Bar, Adchini, New Delhi",
+  description:
+    "A contemporary dining destination in Adchini, South Delhi bringing together thoughtfully crafted food, refreshing drinks, and an inviting atmosphere.",
+};
+
+export const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`;
+export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=15&output=embed`;
+
+export const nav = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/franchise", label: "Franchise" },
+  { href: "/journal", label: "Journal" },
+  { href: "/contact", label: "Contact" },
+];
+
+export const nearby = ["Hauz Khas", "Green Park", "Malviya Nagar", "Saket", "Mehrauli", "Aurobindo Marg"];
+
+export const events = [
+  { when: "[DATE] · [TIME]", name: "[Event Name]", text: "[One-line event description]", image: "/images/event-bar.jpg" },
+  { when: "[DATE] · [TIME]", name: "[Event Name]", text: "[One-line event description]", image: "/images/event-arches.jpg" },
+  { when: "[DATE] · [TIME]", name: "[Event Name]", text: "[One-line event description]", image: "/images/event-glass.jpg" },
+];
+
+export type Post = { slug: string; tag: string; title: string; excerpt: string; image: string };
+
+export const posts: Post[] = [
+  {
+    slug: "best-restaurants-in-south-delhi-for-dinner",
+    tag: "Dining",
+    title: "Best Restaurants in South Delhi for Dinner",
+    excerpt: "Where to book when you want good food, a great room and an evening that doesn't rush.",
+    image: "/images/blog-featured.jpg",
+  },
+  {
+    slug: "best-date-night-restaurants-in-south-delhi",
+    tag: "Date Night",
+    title: "Best Date Night Restaurants in South Delhi",
+    excerpt: "Candlelight, cocktails and tables made for two.",
+    image: "/images/girl-drink.jpg",
+  },
+  {
+    slug: "where-to-celebrate-a-birthday-in-south-delhi",
+    tag: "Celebrations",
+    title: "Where to Celebrate a Birthday in South Delhi",
+    excerpt: "Big group or a quiet toast — places that make the day feel like an occasion.",
+    image: "/images/girl-cocktail.jpg",
+  },
+  {
+    slug: "best-restaurants-near-hauz-khas",
+    tag: "Neighbourhood",
+    title: "Best Restaurants Near Hauz Khas",
+    excerpt: "Just minutes from the village, a few tables worth the short drive.",
+    image: "/images/arches-night.jpg",
+  },
+  {
+    slug: "dining-experiences-to-try-in-south-delhi",
+    tag: "Food",
+    title: "Dining Experiences to Try in South Delhi",
+    excerpt: "Plates, pours and rooms that turn dinner into an experience.",
+    image: "/images/food-plate.jpg",
+  },
+  {
+    slug: "best-places-for-dinner-with-friends-in-south-delhi",
+    tag: "Friends",
+    title: "Best Places for a Dinner With Friends in South Delhi",
+    excerpt: "Sharing plates, long tables and music that keeps the conversation going.",
+    image: "/images/domes.jpg",
+  },
+];
+
+export const faqs = [
+  { q: "Where is Amaare Breeze Bar located?", a: "Amaare Breeze Bar is located in Adchini, South Delhi." },
+  {
+    q: "What kind of dining experience does Amaare offer?",
+    a: "A contemporary dining experience with thoughtfully crafted food, drinks and an inviting atmosphere.",
+  },
+  { q: "Does Amaare serve cocktails?", a: "Yes, Amaare offers a selection of cocktails and drinks to complement the dining experience." },
+  { q: "Is Amaare suitable for celebrations?", a: "Amaare can be a setting for birthdays, gatherings and other special occasions." },
+  { q: "Can I reserve a table at Amaare?", a: "Yes. Guests can reserve a table through the available booking options." },
+];
