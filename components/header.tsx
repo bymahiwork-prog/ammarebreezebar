@@ -60,7 +60,9 @@ export function Header() {
           <div className="flex items-center justify-end gap-4">
             <Link
               href="/contact"
-              className="kicker hidden whitespace-nowrap border border-cream bg-cream px-6 py-3.5 text-[0.64rem] font-medium text-olive-deep transition-colors hover:bg-transparent hover:text-cream sm:inline-block"
+              className={`hidden whitespace-nowrap rounded-full px-6 py-2.5 text-[0.8rem] font-medium tracking-wide transition-colors sm:inline-block ${
+                solid ? "bg-cream text-olive-deep hover:bg-paper" : "border border-cream/70 text-cream hover:bg-cream hover:text-olive-deep"
+              }`}
             >
               Reserve a Table
             </Link>
