@@ -38,7 +38,7 @@ const pillars = [
 export default function AboutPage() {
   return (
     <>
-      <PageHero image="/images/domes.jpg" position="center 40%" kicker="About Amaare" plain="The Amaare" accent="Dining Experience">
+      <PageHero image="/images/menu/highball-garden.jpg" position="center 40%" kicker="About Amaare" plain="The Amaare" accent="Dining Experience">
         <p className="kicker leading-loose text-cream/75">Good Food · Thoughtful Drinks · An Atmosphere Made for Lingering</p>
       </PageHero>
 
@@ -58,10 +58,10 @@ export default function AboutPage() {
             <Img src="/images/hero-statue.jpg" alt="The carved stone face at Amaare" className="aspect-[3/4]" sizes="33vw" />
           </Reveal>
           <Reveal delay={120} className="col-span-6 sm:col-span-4">
-            <Img src="/images/girl-yellow.jpg" alt="A guest in Amaare's dining room" className="aspect-[3/4.4]" sizes="33vw" pos="center 20%" />
+            <Img src="/images/menu/skewers.jpg" alt="Glazed skewers served at the table" className="aspect-[3/4.4]" sizes="33vw" pos="center 55%" />
           </Reveal>
           <Reveal delay={240} className="col-span-4 mt-12 hidden sm:block">
-            <Img src="/images/pour.jpg" alt="A bartender pouring a drink" className="aspect-[3/4]" sizes="33vw" />
+            <Img src="/images/menu/golden-coupe.jpg" alt="A golden cocktail at the bar" className="aspect-[3/4]" sizes="33vw" />
           </Reveal>
         </Container>
       </section>
@@ -86,7 +86,7 @@ export default function AboutPage() {
           </Reveal>
           <Reveal delay={150} className="relative">
             <div aria-hidden className="absolute -bottom-5 -left-5 h-full w-full border border-sage/40" />
-            <Img src="/images/green-dish.jpg" alt="A signature plate served at Amaare" className="aspect-[4/5]" />
+            <Img src="/images/menu/sushi.jpg" alt="An avocado roll served on a marble table" className="aspect-[4/5]" />
           </Reveal>
         </Container>
       </section>
@@ -112,7 +112,7 @@ export default function AboutPage() {
 
       {/* Location */}
       <section className="relative overflow-hidden bg-olive text-cream">
-        <Brand kind="mark" className="pointer-events-none absolute -left-20 -top-16 w-[340px] text-cream/[0.04]" />
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-20 -top-16 w-[340px] opacity-[0.04]" />
         <Container className="relative grid items-center gap-16 py-28 sm:py-36 lg:grid-cols-2 lg:gap-24">
           <Reveal>
             <Img src="/images/red-bar.jpg" alt="Amaare's glowing bar at night" className="aspect-[4/3]" />

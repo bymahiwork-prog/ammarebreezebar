@@ -44,7 +44,7 @@ export default function FranchisePage() {
       </section>
 
       <section id="enquire" className="relative scroll-mt-20 overflow-hidden bg-olive text-cream">
-        <Brand kind="mark" className="pointer-events-none absolute -left-24 bottom-0 w-[420px] text-cream/[0.04]" />
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-24 bottom-0 w-[420px] opacity-[0.04]" />
         <Container className="relative grid items-start gap-16 py-28 sm:py-36 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
           <Reveal>
             <Kicker light>Let&apos;s Connect</Kicker>

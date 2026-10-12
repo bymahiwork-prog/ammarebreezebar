@@ -15,7 +15,7 @@ export default function JournalPage() {
   const [featured, ...rest] = posts;
   return (
     <>
-      <PageHero image="/images/blog-featured.jpg" position="center 30%" kicker="Blog" plain="The Amaare" accent="Journal">
+      <PageHero image="/images/menu/negroni.jpg" position="center 55%" kicker="Blog" plain="The Amaare" accent="Journal">
         <p className="kicker leading-loose text-cream/75">Food · Dining · Drinks · The Amaare Way</p>
       </PageHero>
 
@@ -49,7 +49,7 @@ export default function JournalPage() {
               ))}
               <Reveal delay={200}>
                 <div className="relative flex aspect-[4/3] flex-col items-center justify-center overflow-hidden bg-olive p-8 text-center text-cream sm:aspect-auto sm:h-full">
-                  <Brand kind="mark" className="w-10 text-sage-pale" />
+                  <Brand kind="mark" tone="cream" className="w-10 opacity-80" />
                   <p className="display mt-6 text-3xl">Read enough?</p>
                   <p className="accent text-3xl text-sage-pale">Come dine with us.</p>
                   <Button href="/contact" variant="light" className="mt-8">

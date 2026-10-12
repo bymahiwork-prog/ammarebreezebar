@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageHero image="/images/hero-statue.jpg" position="center 35%" kicker="Contact" plain="Come Dine" accent="With Us">
+      <PageHero image="/images/menu/pink-cocktail.jpg" position="center 55%" kicker="Contact" plain="Come Dine" accent="With Us">
         <p>Planning dinner, a celebration, or simply looking for your next favourite table? We&apos;d love to welcome you.</p>
       </PageHero>
 
@@ -22,7 +22,7 @@ export default function ContactPage() {
         <Container className="grid gap-16 py-24 sm:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <Reveal>
             <div className="relative overflow-hidden bg-olive p-8 text-cream sm:p-12">
-              <Brand kind="mark" className="pointer-events-none absolute -right-12 -top-12 w-56 text-cream/[0.05]" />
+              <Brand kind="mark" tone="cream" className="pointer-events-none absolute -right-12 -top-12 w-56 opacity-[0.05]" />
               <Kicker light>Let&apos;s Connect</Kicker>
               <h2 className="display mt-6 text-4xl">{site.name}</h2>
               <div className="mt-10">

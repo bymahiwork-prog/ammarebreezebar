@@ -5,7 +5,7 @@ import type { CSSProperties, ReactNode } from "react";
 type BtnVariant = "solid" | "line" | "light" | "line-light";
 
 const btn: Record<BtnVariant, string> = {
-  solid: "bg-sage-deep text-paper hover:bg-olive",
+  solid: "bg-olive text-cream hover:bg-sage-deep",
   line: "border border-ink/35 text-ink hover:bg-ink hover:text-paper hover:border-ink",
   light: "bg-cream text-olive hover:bg-paper",
   "line-light": "border border-cream/50 text-cream hover:bg-cream hover:text-olive hover:border-cream",

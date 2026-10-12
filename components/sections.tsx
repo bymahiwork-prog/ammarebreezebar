@@ -55,7 +55,7 @@ export function Ornament({ light = false, className = "" }: { light?: boolean; c
   return (
     <div aria-hidden className={`flex items-center justify-center gap-5 ${light ? "text-sage-pale/70" : "text-sage/80"} ${className}`}>
       <span className="h-px w-16 bg-current opacity-60" />
-      <Brand kind="mark" className="w-7" />
+      <Brand kind="mark" tone={light ? "cream" : "sage"} className="w-8 opacity-80" />
       <span className="h-px w-16 bg-current opacity-60" />
     </div>
   );
@@ -71,7 +71,7 @@ export function Marquee({ words, dark = false }: { words: string[]; dark?: boole
             {row.map((w, i) => (
               <span key={`${k}-${i}`} className="flex items-center">
                 <span className="accent whitespace-nowrap px-8 text-3xl sm:text-4xl">{w}</span>
-                <Brand kind="mark" className="w-5 opacity-60" />
+                <Brand kind="mark" tone={dark ? "cream" : "sage"} className="w-5 opacity-60" />
               </span>
             ))}
           </div>
@@ -89,7 +89,7 @@ export function TableAwaits({ image = "/images/arches-night.jpg" }: { image?: st
       <div className="absolute inset-0 -z-10 bg-olive-deep/70" />
       <Container className="py-28 text-center sm:py-40">
         <Reveal>
-          <Brand kind="mark" className="w-14 text-sage-pale" />
+          <Brand kind="full" tone="cream" className="mx-auto w-[150px]" />
           <Display plain="Your Table" accent="Awaits" className="mt-8 text-5xl sm:text-7xl" accentClass="text-sage-pale" />
           <p className="mx-auto mt-6 max-w-md text-cream/75">Good food. Good drinks. Good company. See you at Amaare.</p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

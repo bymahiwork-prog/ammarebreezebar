@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Brand } from "@/components/brand";
+import { bar, kitchen } from "@/lib/site";
 import { Button, Container, Display, Img, Kicker, Reveal } from "@/components/ui";
 import { PageHero } from "@/components/sections";
 import { GalleryTabs } from "./gallery-tabs";
@@ -29,7 +30,7 @@ function SectionHead({ n, plain, accent, text }: { n: string; plain: string; acc
 export default function GalleryPage() {
   return (
     <>
-      <PageHero image="/images/red-bar.jpg" kicker="Gallery" plain="The Amaare" accent="Experience">
+      <PageHero image="/images/menu/matcha-sour.jpg" position="center 55%" kicker="Gallery" plain="The Amaare" accent="Experience">
         <p>Food, ambience, people, and moments around the table.</p>
       </PageHero>
 
@@ -59,15 +60,10 @@ export default function GalleryPage() {
       <section id="food-drinks" className="scroll-mt-32 bg-linen">
         <Container className="py-24 sm:py-32">
           <SectionHead n="02" plain="Made to Be" accent="Savoured" text="Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for." />
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-            {[
-              ["/images/food-plate.jpg", "A plated signature dish", ""],
-              ["/images/green-dish.jpg", "A green herb dish being served", "lg:mt-16"],
-              ["/images/drink-amber.jpg", "An amber cocktail on a coaster", ""],
-              ["/images/pour.jpg", "A bartender pouring into a mixing glass", "lg:mt-16"],
-            ].map(([src, alt, offset], i) => (
-              <Reveal key={src} delay={i * 100} className={offset}>
-                <Img src={src} alt={alt} className="aspect-[3/4]" sizes="(min-width: 1024px) 25vw, 50vw" />
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
+            {[...kitchen.map((k) => ({ src: k.image, alt: k.name })), ...bar.map((b) => ({ src: b.image, alt: b.alt }))].map((p, i) => (
+              <Reveal key={p.src} delay={(i % 4) * 90}>
+                <Img src={p.src} alt={p.alt} className="aspect-[2/3]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw" />
               </Reveal>
             ))}
           </div>
@@ -115,7 +111,7 @@ export default function GalleryPage() {
             {/* Placeholder until the birthday / group table photo arrives */}
             <Reveal delay={300} className="lg:mt-16">
               <div className="flex aspect-[3/4] flex-col items-center justify-center gap-5 border border-dashed border-sage/50 bg-linen p-6 text-center text-sage">
-                <Brand kind="mark" className="w-10" />
+                <Brand kind="mark" tone="sage" className="w-10" />
                 <span className="kicker text-[0.58rem]">Birthday / group table photo</span>
               </div>
             </Reveal>

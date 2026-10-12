@@ -32,7 +32,26 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ];
 
-export const nearby = ["Hauz Khas", "Green Park", "Malviya Nagar", "Saket", "Mehrauli", "Aurobindo Marg"];
+// Dish captions describe what's in each photo — swap in the real menu names.
+export const kitchen = [
+  { image: "/images/menu/dimsum.jpg", name: "Dim Sum", note: "Steamed, served with three dips" },
+  { image: "/images/menu/skewers.jpg", name: "Glazed Skewers", note: "Off the grill, sesame-finished" },
+  { image: "/images/menu/chaat-plate.jpg", name: "Layered Chaat", note: "Crisp pastry, chickpeas, pomegranate" },
+  { image: "/images/menu/sushi.jpg", name: "Avocado Roll", note: "Pickled ginger, wasabi, soy" },
+  { image: "/images/menu/lace-dumpling.jpg", name: "Lace Dumplings", note: "Pan-crisped, golden lace" },
+  { image: "/images/menu/ribs.jpg", name: "Sticky Ribs", note: "Glazed, charred, spiced" },
+];
+
+export const bar = [
+  { image: "/images/menu/negroni.jpg", alt: "A ruby-red cocktail on an Amaare coaster" },
+  { image: "/images/menu/golden-coupe.jpg", alt: "A golden cocktail in a coupe glass" },
+  { image: "/images/menu/paprika-gin.jpg", alt: "A spiced-rim cocktail on an Amaare coaster" },
+  { image: "/images/menu/matcha-sour.jpg", alt: "A green cocktail on a carved stone ledge" },
+  { image: "/images/menu/amber-old-fashioned.jpg", alt: "An amber cocktail with a caramel garnish" },
+  { image: "/images/menu/pink-cocktail.jpg", alt: "A pink cocktail beside a sculpture in the garden" },
+];
+
+export const nearby =["Hauz Khas", "Green Park", "Malviya Nagar", "Saket", "Mehrauli", "Aurobindo Marg"];
 
 export const events = [
   { when: "[DATE] · [TIME]", name: "[Event Name]", text: "[One-line event description]", image: "/images/event-bar.jpg" },
@@ -48,21 +67,21 @@ export const posts: Post[] = [
     tag: "Dining",
     title: "Best Restaurants in South Delhi for Dinner",
     excerpt: "Where to book when you want good food, a great room and an evening that doesn't rush.",
-    image: "/images/green-dish.jpg",
+    image: "/images/menu/sushi.jpg",
   },
   {
     slug: "best-date-night-restaurants-in-south-delhi",
     tag: "Date Night",
     title: "Best Date Night Restaurants in South Delhi",
     excerpt: "Candlelight, cocktails and tables made for two.",
-    image: "/images/girl-drink.jpg",
+    image: "/images/menu/pink-cocktail.jpg",
   },
   {
     slug: "where-to-celebrate-a-birthday-in-south-delhi",
     tag: "Celebrations",
     title: "Where to Celebrate a Birthday in South Delhi",
     excerpt: "Big group or a quiet toast — places that make the day feel like an occasion.",
-    image: "/images/girl-cocktail.jpg",
+    image: "/images/menu/golden-coupe.jpg",
   },
   {
     slug: "best-restaurants-near-hauz-khas",
@@ -76,14 +95,14 @@ export const posts: Post[] = [
     tag: "Food",
     title: "Dining Experiences to Try in South Delhi",
     excerpt: "Plates, pours and rooms that turn dinner into an experience.",
-    image: "/images/food-plate.jpg",
+    image: "/images/menu/chaat-plate.jpg",
   },
   {
     slug: "best-places-for-dinner-with-friends-in-south-delhi",
     tag: "Friends",
     title: "Best Places for a Dinner With Friends in South Delhi",
     excerpt: "Sharing plates, long tables and music that keeps the conversation going.",
-    image: "/images/domes.jpg",
+    image: "/images/menu/dimsum.jpg",
   },
 ];
 
