@@ -110,7 +110,7 @@ export const faqs = [
   { q: "Where is Amaare Breeze Bar located?", a: "Amaare Breeze Bar is located in Adchini, South Delhi." },
   {
     q: "What kind of dining experience does Amaare offer?",
-    a: "A contemporary dining experience with thoughtfully crafted food, drinks and an inviting atmosphere.",
+    a: "Amaare offers a contemporary dining experience with thoughtfully crafted food, drinks and an inviting atmosphere.",
   },
   { q: "Does Amaare serve cocktails?", a: "Yes, Amaare offers a selection of cocktails and drinks to complement the dining experience." },
   { q: "Is Amaare suitable for celebrations?", a: "Amaare can be a setting for birthdays, gatherings and other special occasions." },

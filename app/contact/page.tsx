@@ -19,7 +19,7 @@ export default function ContactPage() {
       </PageHero>
 
       <section>
-        <Container className="grid gap-16 py-24 sm:py-32 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
+        <Container className="grid gap-16 py-14 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <Reveal>
             <div className="relative overflow-hidden bg-olive p-8 text-cream sm:p-12">
               <Brand kind="mark" tone="cream" className="pointer-events-none absolute -right-12 -top-12 w-56 opacity-[0.05]" />

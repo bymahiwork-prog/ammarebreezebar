@@ -20,7 +20,7 @@ export default function JournalPage() {
       </PageHero>
 
       <section>
-        <Container className="py-24 sm:py-32">
+        <Container className="py-14 sm:py-20">
           <Reveal>
             <Link href={`/journal/${featured.slug}`} className="group grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
               <Img src={featured.image} alt="" priority className="aspect-[4/3] lg:col-span-7" sizes="(min-width: 1024px) 58vw, 100vw" />

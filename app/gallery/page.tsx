@@ -38,7 +38,7 @@ export default function GalleryPage() {
 
       {/* 01 The Space */}
       <section id="the-space" className="scroll-mt-32">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-14 sm:py-20">
           <SectionHead n="01" plain="Settle In." accent="Stay Awhile." text="A setting made for easy conversations and memorable evenings." />
           <div className="grid grid-cols-12 gap-4 sm:gap-6">
             <Reveal className="col-span-12 sm:col-span-7">
@@ -58,7 +58,7 @@ export default function GalleryPage() {
 
       {/* 02 Food & Drinks */}
       <section id="food-drinks" className="scroll-mt-32 bg-linen">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-14 sm:py-20">
           <SectionHead n="02" plain="Made to Be" accent="Savoured" text="Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for." />
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
             {[...kitchen.map((k) => ({ src: k.image, alt: k.name })), ...bar.map((b) => ({ src: b.image, alt: b.alt }))].map((p, i) => (
@@ -72,7 +72,7 @@ export default function GalleryPage() {
 
       {/* 03 The Evenings */}
       <section id="the-evenings" className="scroll-mt-32 bg-olive text-cream">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-14 sm:py-20">
           <Reveal className="mb-12 grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-end sm:gap-10">
             <p className="accent text-6xl leading-none text-sage-pale/40">03</p>
             <Display plain="Good Food. Good Music." accent="Good Company." className="text-4xl sm:text-5xl" accentClass="text-sage-pale" />
@@ -96,7 +96,7 @@ export default function GalleryPage() {
 
       {/* 04 Celebrations */}
       <section id="celebrations" className="scroll-mt-32">
-        <Container className="py-24 sm:py-32">
+        <Container className="py-14 sm:py-20">
           <SectionHead n="04" plain="Make It an" accent="Amaare Moment" text="Birthdays, gatherings, and occasions worth raising a glass to." />
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {[

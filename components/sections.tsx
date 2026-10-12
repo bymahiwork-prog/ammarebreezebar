@@ -23,12 +23,12 @@ export function PageHero({
   position?: string;
 }) {
   return (
-    <section className={`relative isolate flex items-end overflow-hidden bg-olive text-cream ${tall ? "min-h-[100svh]" : "min-h-[78svh]"}`}>
+    <section className={`relative isolate flex items-end overflow-hidden bg-olive text-cream ${tall ? "min-h-[100svh]" : "min-h-[62svh]"}`}>
       <div className="absolute inset-0 -z-10 animate-slowzoom">
         <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" style={{ objectPosition: position }} />
       </div>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(26,32,24,.55)_0%,rgba(26,32,24,.15)_35%,rgba(26,32,24,.35)_60%,rgba(26,32,24,.85)_100%)]" />
-      <Container className="pb-16 pt-40 sm:pb-24">
+      <Container className="pb-12 pt-36 sm:pb-16">
         <div className="max-w-3xl">
           <div className="animate-rise">
             <Kicker light>{kicker}</Kicker>
@@ -87,7 +87,7 @@ export function TableAwaits({ image = "/images/arches-night.jpg" }: { image?: st
     <section className="relative isolate overflow-hidden bg-olive text-cream">
       <Image src={image} alt="" fill sizes="100vw" className="-z-10 object-cover" />
       <div className="absolute inset-0 -z-10 bg-olive-deep/70" />
-      <Container className="py-28 text-center sm:py-40">
+      <Container className="py-20 text-center sm:py-28">
         <Reveal>
           <Brand kind="full" tone="cream" className="mx-auto w-[150px]" />
           <Display plain="Your Table" accent="Awaits" className="mt-8 text-5xl sm:text-7xl" accentClass="text-sage-pale" />
@@ -148,7 +148,7 @@ export function Faq({ dark = false }: { dark?: boolean }) {
   };
   return (
     <section className={dark ? "bg-olive-deep text-cream" : "bg-cream"}>
-      <Container className="grid gap-12 py-24 sm:py-32 lg:grid-cols-[0.8fr_1.2fr]">
+      <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Kicker light={dark}>Good to Know</Kicker>
           <Display

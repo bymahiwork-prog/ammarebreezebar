@@ -44,7 +44,7 @@ export default function AboutPage() {
 
       {/* Statement */}
       <section>
-        <Container className="py-28 text-center sm:py-36">
+        <Container className="py-16 text-center sm:py-24">
           <Reveal>
             <Ornament />
             <p className="display mx-auto mt-12 max-w-4xl text-[2rem] leading-[1.35] sm:text-[2.7rem]">
@@ -68,7 +68,7 @@ export default function AboutPage() {
 
       {/* Philosophy */}
       <section className="bg-linen">
-        <Container className="grid items-center gap-16 py-28 sm:py-36 lg:grid-cols-2 lg:gap-24">
+        <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <Kicker>Our Philosophy</Kicker>
             <Display plain="More Than" accent="Just Dining" breakAccent className="mt-7 text-5xl sm:text-[4.2rem]" />
@@ -93,7 +93,7 @@ export default function AboutPage() {
 
       {/* Pillars */}
       <section>
-        <Container className="grid gap-16 py-28 sm:py-36 md:grid-cols-3 md:gap-12">
+        <Container className="grid gap-16 py-16 sm:py-24 md:grid-cols-3 md:gap-12">
           {pillars.map((p, i) => (
             <Reveal key={p.kicker} delay={i * 120} className="border-t border-ink/20 pt-8">
               <p className="accent text-3xl text-sage">{["I", "II", "III"][i]}</p>
@@ -113,7 +113,7 @@ export default function AboutPage() {
       {/* Location */}
       <section className="relative overflow-hidden bg-olive text-cream">
         <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-20 -top-16 w-[340px] opacity-[0.04]" />
-        <Container className="relative grid items-center gap-16 py-28 sm:py-36 lg:grid-cols-2 lg:gap-24">
+        <Container className="relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <Img src="/images/red-bar.jpg" alt="Amaare's glowing bar at night" className="aspect-[4/3]" />
           </Reveal>
@@ -141,7 +141,7 @@ export default function AboutPage() {
 
       {/* Closing */}
       <section>
-        <Container className="py-28 text-center sm:py-36">
+        <Container className="py-16 text-center sm:py-24">
           <Reveal>
             <Ornament />
             <Display plain="Come As You Are." accent="Stay For The Evening." breakAccent className="mt-10 text-5xl sm:text-6xl" />

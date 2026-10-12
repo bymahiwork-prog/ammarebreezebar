@@ -27,7 +27,7 @@ export default function FranchisePage() {
       </PageHero>
 
       <section>
-        <Container className="grid items-center gap-16 py-28 sm:py-36 lg:grid-cols-2 lg:gap-24">
+        <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
           <Reveal className="relative">
             <div aria-hidden className="absolute -right-5 -top-5 h-full w-full border border-sage/40" />
             <Img src="/images/girl-brown.jpg" alt="Amaare's garden dining room" className="aspect-[4/5]" />
@@ -45,7 +45,7 @@ export default function FranchisePage() {
 
       <section id="enquire" className="relative scroll-mt-20 overflow-hidden bg-olive text-cream">
         <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-24 bottom-0 w-[420px] opacity-[0.04]" />
-        <Container className="relative grid items-start gap-16 py-28 sm:py-36 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
+        <Container className="relative grid items-start gap-10 py-16 sm:py-24 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
             <Kicker light>Let&apos;s Connect</Kicker>
             <Display plain="Partner" accent="With Us" breakAccent className="mt-7 text-5xl sm:text-6xl" accentClass="text-sage-pale" />
@@ -85,7 +85,7 @@ export default function FranchisePage() {
       </section>
 
       <section>
-        <Container className="py-28 text-center sm:py-36">
+        <Container className="py-16 text-center sm:py-24">
           <Reveal>
             <Ornament />
             <Display plain="Let's Build the" accent="Next Amaare" breakAccent className="mt-10 text-5xl sm:text-6xl" />

@@ -26,7 +26,7 @@ export default async function JournalPost({ params }: PageProps<"/journal/[slug]
         <p>{post.excerpt}</p>
       </PageHero>
       <article>
-        <Container className="max-w-2xl py-24 text-center sm:py-32">
+        <Container className="max-w-2xl py-16 text-center sm:py-24">
           <Reveal>
             <Ornament />
             {/* Article body goes here once the SEO blogs are written. */}
