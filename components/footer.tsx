@@ -7,15 +7,15 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-olive-deep text-cream/75">
       <Brand kind="mark" tone="cream" className="pointer-events-none absolute -right-28 -top-16 w-[460px] opacity-[0.04]" />
-      <Container className="relative pb-10 pt-24">
+      <Container className="relative pb-8 pt-16">
         <div className="flex flex-col items-center text-center">
           <Brand kind="full" tone="cream" label={site.name} className="w-[200px] sm:w-[230px]" />
-          <p className="mt-8 max-w-sm text-sm leading-relaxed text-cream/55">
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-cream/55">
             Daytime glasshouse, sunset cocktails and easy evenings in South Delhi.
           </p>
         </div>
 
-        <div className="mt-20 grid gap-12 border-t border-cream/10 pt-14 text-center sm:grid-cols-3 sm:text-left">
+        <div className="mt-12 grid gap-10 border-t border-cream/10 pt-10 text-center sm:grid-cols-3 sm:text-left">
           <div>
             <p className="kicker mb-5 text-sage-pale">Visit</p>
             <ul className="space-y-2.5 text-sm">
@@ -50,7 +50,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-cream/10 pt-8 text-xs text-cream/40 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-6 border-t border-cream/10 pt-6 text-xs text-cream/40 sm:flex-row">
           <ul className="flex flex-wrap justify-center gap-x-7 gap-y-2">
             {nav.slice(1).map((l) => (
               <li key={l.href}>

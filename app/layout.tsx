@@ -6,31 +6,25 @@ import { RevealOnScroll } from "@/components/reveal";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-// Fonts are self-hosted from app/fonts (Gilda Display, Cormorant Garamond, Jost — all OFL).
-const gilda = localFont({
-  variable: "--font-gilda",
-  display: "swap",
-  src: [{ path: "./fonts/gilda-display-latin-400-normal.woff2", weight: "400", style: "normal" }],
-});
-
-const cormorant = localFont({
-  variable: "--font-cormorant",
+// Fonts are self-hosted from app/fonts (Bodoni Moda for headings, Manrope for text — both OFL).
+const bodoni = localFont({
+  variable: "--font-bodoni",
   display: "swap",
   src: [
-    { path: "./fonts/cormorant-garamond-latin-300-italic.woff2", weight: "300", style: "italic" },
-    { path: "./fonts/cormorant-garamond-latin-400-italic.woff2", weight: "400", style: "italic" },
-    { path: "./fonts/cormorant-garamond-latin-300-normal.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/cormorant-garamond-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/bodoni-moda-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/bodoni-moda-latin-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/bodoni-moda-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/bodoni-moda-latin-500-italic.woff2", weight: "500", style: "italic" },
   ],
 });
 
-const jost = localFont({
-  variable: "--font-jost",
+const manrope = localFont({
+  variable: "--font-manrope",
   display: "swap",
   src: [
-    { path: "./fonts/jost-latin-300-normal.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/jost-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/jost-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/manrope-latin-300-normal.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/manrope-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/manrope-latin-500-normal.woff2", weight: "500", style: "normal" },
   ],
 });
 
@@ -70,7 +64,7 @@ const restaurantSchema = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${gilda.variable} ${cormorant.variable} ${jost.variable} antialiased`}>
+    <html lang="en" className={`${bodoni.variable} ${manrope.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }} />
         <Header />

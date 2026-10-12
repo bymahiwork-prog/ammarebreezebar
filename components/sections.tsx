@@ -87,12 +87,12 @@ export function TableAwaits({ image = "/images/arches-night.jpg" }: { image?: st
     <section className="relative isolate overflow-hidden bg-olive text-cream">
       <Image src={image} alt="" fill sizes="100vw" className="-z-10 object-cover" />
       <div className="absolute inset-0 -z-10 bg-olive-deep/70" />
-      <Container className="py-20 text-center sm:py-28">
+      <Container className="py-16 text-center sm:py-20">
         <Reveal>
           <Brand kind="full" tone="cream" className="mx-auto w-[150px]" />
-          <Display plain="Your Table" accent="Awaits" className="mt-8 text-5xl sm:text-7xl" accentClass="text-sage-pale" />
-          <p className="mx-auto mt-6 max-w-md text-cream/75">Good food. Good drinks. Good company. See you at Amaare.</p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Display plain="Your Table" accent="Awaits" className="mt-6 text-[2.8rem] sm:text-[4rem]" accentClass="text-sage-pale" />
+          <p className="mx-auto mt-4 max-w-md text-cream/75">Good food. Good drinks. Good company. See you at Amaare.</p>
+          <div className="mt-7 flex flex-wrap justify-center gap-4">
             <Button href="/contact" variant="light">
               Reserve Your Table
             </Button>
@@ -148,14 +148,14 @@ export function Faq({ dark = false }: { dark?: boolean }) {
   };
   return (
     <section className={dark ? "bg-olive-deep text-cream" : "bg-cream"}>
-      <Container className="grid gap-12 py-14 sm:py-20 lg:grid-cols-[0.8fr_1.2fr]">
+      <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
           <Kicker light={dark}>Good to Know</Kicker>
           <Display
             plain="Frequently Asked"
             accent="Questions"
             breakAccent
-            className="mt-6 text-5xl sm:text-6xl"
+            className="mt-3 text-[2.5rem] sm:text-[3.2rem]"
             accentClass={dark ? "text-sage-pale" : "text-sage"}
           />
         </Reveal>
@@ -163,16 +163,16 @@ export function Faq({ dark = false }: { dark?: boolean }) {
           <div className={`border-t ${dark ? "border-cream/15" : "border-ink/15"}`}>
             {faqs.map((f, i) => (
               <details key={f.q} className={`group border-b ${dark ? "border-cream/15" : "border-ink/15"}`} open={i === 0}>
-                <summary className="flex cursor-pointer items-start justify-between gap-8 py-7">
+                <summary className="flex cursor-pointer items-start justify-between gap-8 py-5">
                   <span className="flex gap-6">
                     <span className={`accent pt-1 text-xl ${dark ? "text-sage-pale" : "text-sage"}`}>{String(i + 1).padStart(2, "0")}</span>
-                    <span className="display text-[1.45rem] leading-snug">{f.q}</span>
+                    <span className="display text-[1.3rem] leading-snug">{f.q}</span>
                   </span>
                   <span aria-hidden className={`faq-icon mt-1 text-2xl font-light transition-transform duration-300 ${dark ? "text-sage-pale" : "text-sage"}`}>
                     +
                   </span>
                 </summary>
-                <p className={`-mt-2 pb-7 pl-12 leading-relaxed ${dark ? "text-cream/65" : "text-muted"}`}>{f.a}</p>
+                <p className={`-mt-1 pb-5 pl-12 leading-relaxed ${dark ? "text-cream/65" : "text-muted"}`}>{f.a}</p>
               </details>
             ))}
           </div>
