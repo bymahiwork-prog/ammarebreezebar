@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import type { ReactNode } from "react";
 import { bar, kitchen, directionsUrl, site } from "@/lib/site";
 import { Brand } from "@/components/brand";
 import { Container, Reveal } from "@/components/ui";
 import { Faq, MapEmbed, VisitList } from "@/components/sections";
 import { HeroSlider } from "@/components/hero-slider";
+import { Label, Photo, Pill } from "@/components/kit";
 
 // Layout modelled on the Seezen homepage; copy from "Amaare Breeze Bar — SEO / AEO / GEO Strategy".
 export const metadata: Metadata = {
@@ -14,41 +13,6 @@ export const metadata: Metadata = {
   description:
     "Discover Amaare Breeze Bar, a contemporary dining destination in South Delhi offering thoughtfully crafted food, drinks and an inviting atmosphere.",
 };
-
-/* ——— small building blocks for this page ——— */
-
-function Pill({
-  href,
-  children,
-  tone = "solid",
-}: {
-  href: string;
-  children: ReactNode;
-  tone?: "solid" | "outline" | "cream" | "outline-dark";
-}) {
-  const styles = {
-    solid: "bg-sage-deep text-cream hover:bg-olive",
-    cream: "bg-cream text-olive-deep hover:bg-paper",
-    outline: "border border-cream/70 text-cream hover:bg-cream hover:text-olive-deep",
-    "outline-dark": "border border-olive/40 text-olive hover:bg-olive hover:text-cream",
-  }[tone];
-  const cls = `inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-[0.82rem] font-medium tracking-wide transition-colors duration-300 ${styles}`;
-  return /^(https?:|tel:)/.test(href) ? (
-    <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className={cls}>
-      {children}
-    </a>
-  ) : (
-    <Link href={href} className={cls}>
-      {children}
-    </Link>
-  );
-}
-
-function Label({ children, dark = false, center = false }: { children: ReactNode; dark?: boolean; center?: boolean }) {
-  return (
-    <p className={`kicker text-[0.72rem] tracking-[0.3em] ${dark ? "text-sage-pale" : "text-sage"} ${center ? "text-center" : ""}`}>{children}</p>
-  );
-}
 
 function CenterHead({ label, title, dark = false }: { label: string; title: string; dark?: boolean }) {
   return (
@@ -58,14 +22,6 @@ function CenterHead({ label, title, dark = false }: { label: string; title: stri
       </Label>
       <h2 className={`display mt-3 text-[2rem] uppercase tracking-[0.04em] sm:text-[2.75rem] ${dark ? "text-cream" : "text-olive"}`}>{title}</h2>
     </Reveal>
-  );
-}
-
-function Photo({ src, alt, className = "", sizes = "50vw", pos }: { src: string; alt: string; className?: string; sizes?: string; pos?: string }) {
-  return (
-    <div className={`relative overflow-hidden bg-olive ${className}`}>
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" style={pos ? { objectPosition: pos } : undefined} />
-    </div>
   );
 }
 

@@ -1,157 +1,156 @@
 import type { Metadata } from "next";
 import { directionsUrl } from "@/lib/site";
 import { Brand } from "@/components/brand";
-import { Button, Container, Display, Img, Kicker, Reveal, TextLink } from "@/components/ui";
-import { Ornament, PageHero, VisitList } from "@/components/sections";
+import { Container, Reveal } from "@/components/ui";
+import { MapEmbed, VisitList } from "@/components/sections";
+import { ArchPhoto, FinalCta, Heading, Label, Photo, PhotoHero, Pill } from "@/components/kit";
 
+// Copy from "Amaare Breeze Bar — SEO / AEO / GEO Strategy", About Us.
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Contemporary Dining in Adchini, South Delhi",
   description:
     "Amaare Breeze Bar is a contemporary dining destination in Adchini, South Delhi — good food, thoughtful drinks and an atmosphere made for lingering.",
 };
 
 const pillars = [
   {
-    kicker: "Food That Brings People Together",
+    label: "Food That Brings People Together",
     plain: "Made to Be",
     accent: "Savoured",
-    text: "Thoughtfully crafted dishes designed to complement every kind of evening — from casual meals to special occasions.",
-    cta: "Explore the Menu",
-    href: "/gallery#food-drinks",
+    text: "Our dining experience brings together thoughtfully crafted dishes designed to complement every kind of evening — from casual meals to special occasions.",
+    cta: { href: "/gallery", label: "Explore the Menu" },
+    image: "/images/menu/sushi.jpg",
+    pos: "center 55%",
   },
   {
-    kicker: "The Amaare Atmosphere",
+    label: "The Amaare Atmosphere",
     plain: "Easy Evenings.",
     accent: "Good Energy.",
-    text: "A welcoming setting, great music, refreshing drinks and the right company. Come for dinner. Stay for the conversation.",
+    text: "A welcoming setting, great music, refreshing drinks and the right company come together to create the Amaare experience. Come for dinner. Stay for the conversation. Make an evening of it.",
+    image: "/images/menu/pink-cocktail.jpg",
+    pos: "center 60%",
   },
   {
-    kicker: "Made for Every Occasion",
+    label: "Made for Every Occasion",
     plain: "Gather. Celebrate.",
     accent: "Unwind.",
-    text: "Date nights, birthdays, group dinners and spontaneous plans — every occasion gets a place to come together.",
-    cta: "Plan Your Celebration",
-    href: "/contact",
+    text: "From date nights and birthdays to group dinners and spontaneous plans, Amaare gives every occasion a place to come together.",
+    cta: { href: "/contact", label: "Plan Your Celebration" },
+    image: "/images/menu/chaat-plate.jpg",
+    pos: "center 60%",
   },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero image="/images/menu/highball-garden.jpg" position="center 40%" kicker="About Amaare" plain="The Amaare" accent="Dining Experience">
-        <p className="kicker leading-loose text-cream/75">Good Food · Thoughtful Drinks · An Atmosphere Made for Lingering</p>
-      </PageHero>
+      <PhotoHero image="/images/menu/highball-garden.jpg" pos="center 40%" label="About Amaare" plain="The Amaare" accent="Dining Experience">
+        <p className="kicker mb-4 text-[0.7rem] tracking-[0.22em] text-cream/90">
+          Good food · Thoughtful drinks · An atmosphere made for lingering
+        </p>
+        <p>
+          Amaare Breeze Bar is a contemporary dining destination in South Delhi, bringing together food, drinks, music and
+          an inviting atmosphere for easy, memorable evenings.
+        </p>
+      </PhotoHero>
 
-      {/* Statement */}
-      <section>
-        <Container className="py-16 text-center sm:py-24">
-          <Reveal>
-            <Ornament />
-            <p className="display mx-auto mt-12 max-w-4xl text-[2rem] leading-[1.35] sm:text-[2.7rem]">
-              Amaare Breeze Bar is a contemporary dining destination in South Delhi, bringing together food, drinks, music
-              and an inviting atmosphere for <span className="accent text-sage">easy, memorable evenings.</span>
+      {/* More Than Just Dining — cream */}
+      <section className="relative overflow-hidden bg-cream py-16">
+        <Brand kind="mark" tone="sage" className="pointer-events-none absolute -left-20 top-10 w-[300px] opacity-[0.06]" />
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <Reveal className="mx-auto w-full max-w-[420px]">
+            <ArchPhoto src="/images/menu/dimsum.jpg" alt="Dim sum lifted from a bamboo steamer at Amaare" className="aspect-[4/5]" sizes="420px" pos="center 40%" dark={false} />
+          </Reveal>
+          <Reveal delay={120}>
+            <Label mark>Our Philosophy</Label>
+            <Heading plain="More Than" accent="Just Dining" />
+            <p className="mt-5 text-[1.05rem] leading-[1.8] text-ink/75">At Amaare, every meal is about more than what&apos;s on the table.</p>
+            <p className="mt-3 text-[1.05rem] leading-[1.8] text-ink/75">
+              It&apos;s about settling in with good company, discovering something new on the menu, enjoying a well-made
+              drink, and letting the evening unfold at its own pace.
+            </p>
+            <p className="mt-3 text-[1.05rem] leading-[1.8] text-ink/75">
+              Whether it&apos;s dinner for two, a catch-up with friends, or a celebration worth gathering for, Amaare is made
+              for moments shared around the table.
             </p>
           </Reveal>
         </Container>
-        <Container className="grid grid-cols-12 items-start gap-4 pb-28 sm:gap-8 sm:pb-36">
-          <Reveal className="col-span-6 mt-16 sm:col-span-4 sm:mt-24">
-            <Img src="/images/hero-statue.jpg" alt="The carved stone face at Amaare" className="aspect-[3/4]" sizes="33vw" />
-          </Reveal>
-          <Reveal delay={120} className="col-span-6 sm:col-span-4">
-            <Img src="/images/menu/skewers.jpg" alt="Glazed skewers served at the table" className="aspect-[3/4.4]" sizes="33vw" pos="center 55%" />
-          </Reveal>
-          <Reveal delay={240} className="col-span-4 mt-12 hidden sm:block">
-            <Img src="/images/menu/golden-coupe.jpg" alt="A golden cocktail at the bar" className="aspect-[3/4]" sizes="33vw" />
-          </Reveal>
-        </Container>
       </section>
 
-      {/* Philosophy */}
-      <section className="bg-linen">
-        <Container className="grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <Kicker>Our Philosophy</Kicker>
-            <Display plain="More Than" accent="Just Dining" breakAccent className="mt-7 text-5xl sm:text-[4.2rem]" />
-            <div className="mt-8 max-w-md space-y-5 leading-[1.85] text-muted">
-              <p>
-                At Amaare, every meal is about more than what&apos;s on the table. It&apos;s about settling in with good
-                company, discovering something new on the menu, enjoying a well-made drink, and letting the evening unfold
-                at its own pace.
-              </p>
-              <p>
-                Dinner for two, a catch-up with friends, or a celebration worth gathering for — Amaare is made for moments
-                shared around the table.
-              </p>
-            </div>
+      {/* Three pillars — green */}
+      <section className="relative overflow-hidden bg-olive py-16 text-cream">
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -bottom-24 -right-20 w-[380px] opacity-[0.035]" />
+        <Container className="relative">
+          <Reveal className="text-center">
+            <Label dark center>
+              The Amaare Way
+            </Label>
+            <h2 className="display mt-3 text-[2rem] uppercase tracking-[0.04em] sm:text-[2.75rem]">Food, Atmosphere, Occasion</h2>
           </Reveal>
-          <Reveal delay={150} className="relative">
-            <div aria-hidden className="absolute -bottom-5 -left-5 h-full w-full border border-sage/40" />
-            <Img src="/images/menu/sushi.jpg" alt="An avocado roll served on a marble table" className="aspect-[4/5]" />
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* Pillars */}
-      <section>
-        <Container className="grid gap-16 py-16 sm:py-24 md:grid-cols-3 md:gap-12">
-          {pillars.map((p, i) => (
-            <Reveal key={p.kicker} delay={i * 120} className="border-t border-ink/20 pt-8">
-              <p className="accent text-3xl text-sage">{["I", "II", "III"][i]}</p>
-              <p className="kicker mt-6 text-[0.6rem] text-muted">{p.kicker}</p>
-              <Display as="h3" plain={p.plain} accent={p.accent} breakAccent className="mt-4 text-[2.4rem]" />
-              <p className="mt-5 leading-[1.85] text-muted">{p.text}</p>
-              {p.cta && p.href && (
-                <div className="mt-8">
-                  <TextLink href={p.href}>{p.cta}</TextLink>
+          <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
+            {pillars.map((p, i) => (
+              <Reveal key={p.label} delay={i * 110} className="flex flex-col text-center">
+                <div className="mx-auto w-full max-w-[280px]">
+                  <ArchPhoto src={p.image} alt="" className="aspect-[3/3.6]" sizes="280px" pos={p.pos} />
                 </div>
-              )}
-            </Reveal>
-          ))}
+                <p className="kicker mt-8 text-[0.6rem] tracking-[0.24em] text-sage-pale">{p.label}</p>
+                <h3 className="display mt-2 text-[1.8rem] leading-tight">
+                  {p.plain} <span className="accent text-sage-pale">{p.accent}</span>
+                </h3>
+                <p className="mx-auto mt-3 max-w-xs flex-1 text-[0.92rem] leading-[1.75] text-cream/75">{p.text}</p>
+                {p.cta && (
+                  <div className="mt-6">
+                    <Pill href={p.cta.href} tone="outline">
+                      {p.cta.label}
+                    </Pill>
+                  </div>
+                )}
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </section>
 
-      {/* Location */}
-      <section className="relative overflow-hidden bg-olive text-cream">
-        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-20 -top-16 w-[340px] opacity-[0.04]" />
-        <Container className="relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-2 lg:gap-16">
+      {/* Photo band */}
+      <section aria-hidden className="grid grid-cols-3 gap-1 bg-olive-deep sm:grid-cols-6">
+        {["negroni", "skewers", "golden-coupe", "lace-dumpling", "matcha-sour", "ribs"].map((n) => (
+          <Photo key={n} src={`/images/menu/${n}.jpg`} alt="" className="aspect-square" sizes="(min-width:640px) 17vw, 33vw" />
+        ))}
+      </section>
+
+      {/* Location — cream */}
+      <section className="bg-cream py-16">
+        <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal>
-            <Img src="/images/red-bar.jpg" alt="Amaare's glowing bar at night" className="aspect-[4/3]" />
-          </Reveal>
-          <Reveal delay={150}>
-            <Kicker light>Location</Kicker>
-            <Display plain="Your South Delhi" accent="Table" breakAccent className="mt-7 text-5xl sm:text-6xl" accentClass="text-sage-pale" />
-            <p className="mt-8 max-w-md leading-[1.85] text-cream/75">
-              Located in Adchini, South Delhi — a convenient dining destination for guests from Hauz Khas, Green Park,
-              Malviya Nagar, Saket and surrounding areas.
+            <Label mark>Location</Label>
+            <Heading plain="Your South Delhi" accent="Table" />
+            <p className="mt-5 max-w-md leading-[1.8] text-ink/75">
+              Located in Adchini, South Delhi, Amaare Breeze Bar is a convenient dining destination for guests from Hauz
+              Khas, Green Park, Malviya Nagar, Saket and surrounding areas.
             </p>
-            <div className="mt-10 max-w-md">
-              <VisitList light />
+            <div className="mt-7 max-w-md">
+              <VisitList />
             </div>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/contact" variant="light">
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Pill href={directionsUrl}>Get Directions</Pill>
+              <Pill href="/contact" tone="outline-dark">
                 Reserve Your Table
-              </Button>
-              <Button href={directionsUrl} variant="line-light">
-                Get Directions
-              </Button>
+              </Pill>
             </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <MapEmbed className="h-[380px] rounded-2xl" />
           </Reveal>
         </Container>
       </section>
 
-      {/* Closing */}
-      <section>
-        <Container className="py-16 text-center sm:py-24">
-          <Reveal>
-            <Ornament />
-            <Display plain="Come As You Are." accent="Stay For The Evening." breakAccent className="mt-10 text-5xl sm:text-6xl" />
-            <p className="mt-6 text-muted">Good food, good drinks, and a table waiting for you.</p>
-            <div className="mt-10">
-              <Button href="/contact">Reserve Your Table</Button>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+      <FinalCta
+        image="/images/arches-night.jpg"
+        plain="Come As You Are."
+        accent="Stay For The Evening."
+        lines={["Good food, good drinks, and a table waiting for you."]}
+        secondary={null}
+      />
     </>
   );
 }

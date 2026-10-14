@@ -1,135 +1,85 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
+import { Container } from "@/components/ui";
+import { Label, Pill } from "@/components/kit";
 import { Brand } from "@/components/brand";
-import { bar, kitchen } from "@/lib/site";
-import { Button, Container, Display, Img, Kicker, Reveal } from "@/components/ui";
-import { PageHero } from "@/components/sections";
-import { GalleryTabs } from "./gallery-tabs";
+import { GalleryGrid, type GalleryPhoto } from "./gallery-grid";
 
 export const metadata: Metadata = {
-  title: "Gallery",
-  description: "Food, ambience, people and moments around the table at Amaare Breeze Bar, Adchini, South Delhi.",
+  title: "Gallery | Food, Drinks & Ambience in Adchini",
+  description:
+    "See inside Amaare Breeze Bar — the space, plated food, cocktails, evenings and celebrations at our contemporary dining restaurant in Adchini, South Delhi.",
 };
 
-const tabs = [
-  { id: "the-space", label: "The Space" },
-  { id: "food-drinks", label: "Food & Drinks" },
-  { id: "the-evenings", label: "The Evenings" },
-  { id: "celebrations", label: "Celebrations" },
+// To add photos: drop the file in public/images and add a line here (w/h = the image's pixel size).
+const photos: GalleryPhoto[] = [
+  { src: "/images/menu/highball-garden.jpg", w: 1800, h: 1200, alt: "A highball with a leaf garnish in Amaare's garden", caption: "Green, all around", category: "space" },
+  { src: "/images/menu/dimsum.jpg", w: 1200, h: 1800, alt: "Dim sum lifted from a bamboo steamer", caption: "Steamed, to share", category: "food" },
+  { src: "/images/menu/negroni.jpg", w: 1200, h: 1800, alt: "A ruby-red cocktail on an Amaare coaster", caption: "A ruby pour", category: "food" },
+  { src: "/images/arches-night.jpg", w: 1217, h: 683, alt: "The lit arches over the terrace after dark", caption: "Under the arches", category: "evenings" },
+  { src: "/images/menu/pink-cocktail.jpg", w: 1200, h: 1800, alt: "A pink cocktail beside a sculpture in the garden", caption: "Golden hour", category: "evenings" },
+  { src: "/images/menu/sushi.jpg", w: 1200, h: 1800, alt: "Avocado roll on a marble table", caption: "Made for the table", category: "food" },
+  { src: "/images/hero-statue.jpg", w: 953, h: 896, alt: "The carved stone face at Amaare, lit at dusk", caption: "The stone face", category: "space" },
+  { src: "/images/menu/chaat-plate.jpg", w: 1200, h: 1800, alt: "A layered plate served in a ceramic hand", caption: "Something to celebrate", category: "celebrations" },
+  { src: "/images/menu/golden-coupe.jpg", w: 1200, h: 1800, alt: "A golden cocktail in a coupe glass", caption: "Raise a glass", category: "celebrations" },
+  { src: "/images/red-bar.jpg", w: 1223, h: 683, alt: "The glowing amber bar at night", caption: "The bar, after dark", category: "evenings" },
+  { src: "/images/menu/matcha-sour.jpg", w: 1200, h: 1800, alt: "A green cocktail on a carved stone ledge", caption: "On the stone ledge", category: "space" },
+  { src: "/images/menu/skewers.jpg", w: 1200, h: 1800, alt: "Glazed skewers lifted from the plate", caption: "Off the grill", category: "food" },
+  { src: "/images/menu/amber-old-fashioned.jpg", w: 1200, h: 1800, alt: "An amber cocktail with a caramel garnish", caption: "Slow sips", category: "evenings" },
+  { src: "/images/menu/lace-dumpling.jpg", w: 1200, h: 1800, alt: "Pan-crisped dumplings with golden lace", caption: "Golden lace", category: "food" },
+  { src: "/images/domes.jpg", w: 643, h: 612, alt: "Glass cloches and a table lamp on a striped banquette", caption: "Set for the evening", category: "space" },
+  { src: "/images/menu/paprika-gin.jpg", w: 1200, h: 1800, alt: "A spiced-rim cocktail on an Amaare coaster", caption: "A spiced rim", category: "celebrations" },
+  { src: "/images/menu/ribs.jpg", w: 1200, h: 1800, alt: "Sticky glazed ribs with sesame", caption: "Sticky, charred, shared", category: "food" },
+  { src: "/images/franchise-arches.jpg", w: 956, h: 859, alt: "The garden terrace under lit arches", caption: "The terrace", category: "space" },
 ];
 
-function SectionHead({ n, plain, accent, text }: { n: string; plain: string; accent: string; text: string }) {
-  return (
-    <Reveal className="mb-12 grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-end sm:gap-10">
-      <p className="accent text-6xl leading-none text-sage/40">{n}</p>
-      <Display plain={plain} accent={accent} className="text-4xl sm:text-5xl" />
-      <p className="max-w-xs text-sm leading-relaxed text-muted sm:text-right">{text}</p>
-    </Reveal>
-  );
-}
+// Section copy from the SEO / AEO / GEO strategy doc.
+const intro = {
+  space: { title: "Settle In. Stay Awhile.", text: "A setting made for easy conversations and memorable evenings." },
+  food: { title: "Made to Be Savoured", text: "Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for." },
+  evenings: { title: "Good Food. Good Music. Good Company.", text: "From relaxed dinners to lively nights, discover the energy of Amaare." },
+  celebrations: { title: "Make It an Amaare Moment", text: "Birthdays, gatherings, and occasions worth raising a glass to." },
+};
 
 export default function GalleryPage() {
   return (
-    <>
-      <PageHero image="/images/menu/matcha-sour.jpg" position="center 55%" kicker="Gallery" plain="The Amaare" accent="Experience">
-        <p>Food, ambience, people, and moments around the table.</p>
-      </PageHero>
+    <div className="bg-olive-deep text-cream">
+      <section className="relative overflow-hidden">
+        <Brand kind="mark" tone="cream" className="pointer-events-none absolute -right-24 top-24 w-[360px] opacity-[0.035]" />
+        <Container className="relative pb-6 pt-36 text-center sm:pt-40">
+          <div className="flex items-center justify-center gap-4 text-sage-pale">
+            <span aria-hidden className="h-px w-8 bg-current opacity-70" />
+            <Label dark>Gallery</Label>
+            <span aria-hidden className="h-px w-8 bg-current opacity-70" />
+          </div>
+          <h1 className="display mt-5 text-[3rem] leading-[0.98] sm:text-[5.2rem]">
+            The Amaare <span className="accent text-sage-pale">Experience</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-xl text-[1.05rem] leading-[1.75] text-cream/75">
+            Food, ambience, people, and moments around the table.
+          </p>
+          <GalleryGrid photos={photos} intro={intro} />
+        </Container>
+      </section>
 
-      <GalleryTabs tabs={tabs} />
-
-      {/* 01 The Space */}
-      <section id="the-space" className="scroll-mt-32">
-        <Container className="py-14 sm:py-20">
-          <SectionHead n="01" plain="Settle In." accent="Stay Awhile." text="A setting made for easy conversations and memorable evenings." />
-          <div className="grid grid-cols-12 gap-4 sm:gap-6">
-            <Reveal className="col-span-12 sm:col-span-7">
-              <Img src="/images/girl-brown.jpg" alt="Guest in Amaare's garden dining room by the fountain" className="aspect-[4/3.4]" />
-            </Reveal>
-            <div className="col-span-12 grid gap-4 sm:col-span-5 sm:gap-6">
-              <Reveal delay={120}>
-                <Img src="/images/hero-statue.jpg" alt="The carved stone face lit at dusk" className="aspect-[5/3]" sizes="40vw" pos="center 30%" />
-              </Reveal>
-              <Reveal delay={220}>
-                <Img src="/images/domes.jpg" alt="Glass cloches and a table lamp on a striped banquette" className="aspect-[5/3]" sizes="40vw" />
-              </Reveal>
-            </div>
+      <section className="mt-10 border-t border-sage/25 bg-olive">
+        <Container className="flex flex-wrap items-center justify-between gap-7 py-14">
+          <div>
+            <h2 className="display text-[2.2rem] leading-[1.05] sm:text-[3rem]">
+              Come Experience <span className="accent text-sage-pale">Amaare</span>
+            </h2>
+            <p className="mt-2 text-cream/70">Your table is waiting.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Pill href="/contact" tone="cream">
+              Reserve Your Table
+            </Pill>
+            <Pill href={site.instagramUrl} tone="outline">
+              {site.instagram} ↗
+            </Pill>
           </div>
         </Container>
       </section>
-
-      {/* 02 Food & Drinks */}
-      <section id="food-drinks" className="scroll-mt-32 bg-linen">
-        <Container className="py-14 sm:py-20">
-          <SectionHead n="02" plain="Made to Be" accent="Savoured" text="Thoughtfully crafted plates, refreshing drinks, and flavours worth coming back for." />
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4">
-            {[...kitchen.map((k) => ({ src: k.image, alt: k.name })), ...bar.map((b) => ({ src: b.image, alt: b.alt }))].map((p, i) => (
-              <Reveal key={p.src} delay={(i % 4) * 90}>
-                <Img src={p.src} alt={p.alt} className="aspect-[2/3]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw" />
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 03 The Evenings */}
-      <section id="the-evenings" className="scroll-mt-32 bg-olive text-cream">
-        <Container className="py-14 sm:py-20">
-          <Reveal className="mb-12 grid gap-6 sm:grid-cols-[auto_1fr_auto] sm:items-end sm:gap-10">
-            <p className="accent text-6xl leading-none text-sage-pale/40">03</p>
-            <Display plain="Good Food. Good Music." accent="Good Company." className="text-4xl sm:text-5xl" accentClass="text-sage-pale" />
-            <p className="max-w-xs text-sm text-cream/60 sm:text-right">From relaxed dinners to lively nights.</p>
-          </Reveal>
-          <div className="grid gap-4 sm:gap-6">
-            <Reveal>
-              <Img src="/images/arches-night.jpg" alt="Lit arches over the garden terrace after dark" className="aspect-[16/7]" sizes="100vw" />
-            </Reveal>
-            <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-              <Reveal delay={100}>
-                <Img src="/images/event-arches.jpg" alt="The garden terrace under lit arches" className="aspect-[16/10]" />
-              </Reveal>
-              <Reveal delay={200}>
-                <Img src="/images/event-glass.jpg" alt="A drink being stirred at the bar" className="aspect-[16/10]" />
-              </Reveal>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* 04 Celebrations */}
-      <section id="celebrations" className="scroll-mt-32">
-        <Container className="py-14 sm:py-20">
-          <SectionHead n="04" plain="Make It an" accent="Amaare Moment" text="Birthdays, gatherings, and occasions worth raising a glass to." />
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-            {[
-              ["/images/girl-cocktail.jpg", "Guest with a cocktail"],
-              ["/images/girl-yellow.jpg", "Guest in the dining room"],
-              ["/images/girl-drink.jpg", "Guest raising a drink"],
-            ].map(([src, alt], i) => (
-              <Reveal key={src} delay={i * 100} className={i % 2 ? "lg:mt-16" : ""}>
-                <Img src={src} alt={alt} className="aspect-[3/4]" sizes="(min-width: 1024px) 25vw, 50vw" pos="center 15%" />
-              </Reveal>
-            ))}
-            {/* Placeholder until the birthday / group table photo arrives */}
-            <Reveal delay={300} className="lg:mt-16">
-              <div className="flex aspect-[3/4] flex-col items-center justify-center gap-5 border border-dashed border-sage/50 bg-linen p-6 text-center text-sage">
-                <Brand kind="mark" tone="sage" className="w-10" />
-                <span className="kicker text-[0.58rem]">Birthday / group table photo</span>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-t border-line">
-        <Container className="flex flex-wrap items-center justify-between gap-8 py-20">
-          <Reveal>
-            <Kicker>Your table is waiting</Kicker>
-            <Display plain="Come Experience" accent="Amaare" className="mt-5 text-5xl" />
-          </Reveal>
-          <Reveal delay={120}>
-            <Button href="/contact">Reserve Your Table</Button>
-          </Reveal>
-        </Container>
-      </section>
-    </>
+    </div>
   );
 }
