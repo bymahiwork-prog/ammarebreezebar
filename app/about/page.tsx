@@ -111,6 +111,34 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      {/* Founder — paper */}
+      <section className="relative overflow-hidden bg-paper py-16">
+        <Brand kind="mark" tone="sage" className="pointer-events-none absolute -right-20 bottom-0 w-[300px] opacity-[0.06]" />
+        <Container className="relative grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <Reveal className="mx-auto w-full max-w-[360px]">
+            <ArchPhoto
+              src="/images/founder-manish-sharma.jpg"
+              alt="Manish Sharma, founder of Amaare Breeze Bar"
+              className="aspect-[4/5]"
+              sizes="360px"
+              pos="center 30%"
+              dark={false}
+            />
+          </Reveal>
+          <Reveal delay={120}>
+            <Label mark>The Founder</Label>
+            <Heading plain="Meet" accent="Manish Sharma" />
+            <p className="kicker mt-4 text-[0.66rem] text-sage-deep">Founder, Amaare Breeze Bar</p>
+            {/* Replace with the founder's own story once the brand shares it. */}
+            <p className="mt-6 max-w-lg text-[1.05rem] leading-[1.8] text-ink/75">
+              Amaare Breeze Bar is the vision of founder Manish Sharma — a place where good food, thoughtful drinks and an
+              easy atmosphere come together, and every guest is made to feel at home.
+            </p>
+            <p className="accent mt-6 text-[1.5rem] text-sage-deep">Good food. Great evenings.</p>
+          </Reveal>
+        </Container>
+      </section>
+
       {/* Photo band */}
       <section aria-hidden className="grid grid-cols-3 gap-1 bg-olive-deep sm:grid-cols-6">
         {["space/marble-table", "menu/negroni", "space/bar-face", "menu/lace-dumpling", "space/conservatory-aisle", "menu/matcha-sour"].map((n) => (
