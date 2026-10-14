@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import { Brand } from "@/components/brand";
 import { Container, Reveal } from "@/components/ui";
-import { ArchPhoto, FinalCta, Heading, Label, Photo, PhotoHero, Pill } from "@/components/kit";
+import { Heading, Label, PhotoHero, Pill } from "@/components/kit";
 import { EnquiryForm } from "@/components/enquiry-form";
 
+// Three sections, same structure as the Zammaya franchise page: hero · enquiry · FAQs.
 // Copy from "Amaare Breeze Bar — SEO / AEO / GEO Strategy", Franchise.
 export const metadata: Metadata = {
   title: "Franchise | Bring Amaare to Your City",
@@ -12,9 +13,40 @@ export const metadata: Metadata = {
     "Bring Amaare Breeze Bar to your city. Explore franchise opportunities with a dining concept built around great food, refreshing drinks and memorable experiences.",
 };
 
+// Adapted from the Zammaya franchise FAQs — confirm details with the brand before launch.
+const faqs = [
+  {
+    q: "Does Amaare offer franchise opportunities?",
+    a: "We are open to conversations with the right partners in new cities. Share your details and our team will get back to you.",
+  },
+  {
+    q: "Who can apply for an Amaare franchise?",
+    a: "Individuals or groups with hospitality or business experience, access to a suitable location, and the capacity to invest in a contemporary dining build.",
+  },
+  {
+    q: "What support is offered to franchise partners?",
+    a: "Details on design, menu, training and launch support are shared with shortlisted partners during our conversations.",
+  },
+  {
+    q: "Which cities are being considered for expansion?",
+    a: "We are evaluating opportunities across major Indian cities. Tell us your preferred location in the enquiry form.",
+  },
+  {
+    q: "How can I submit a franchise enquiry?",
+    a: `Fill in the enquiry form on this page, or call or WhatsApp our team on ${site.phone}.`,
+  },
+];
+
 export default function FranchisePage() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+
   return (
     <>
+      {/* 1 · Hero */}
       <PhotoHero image="/images/arches-night.jpg" label="Franchise Opportunity" plain="Bring Amaare to" accent="Your City">
         <p>Partner with a dining concept built around great food, refreshing drinks, and memorable experiences.</p>
         <p className="mt-3">Explore opportunities to grow with Amaare Breeze Bar and bring the brand to new destinations.</p>
@@ -25,29 +57,7 @@ export default function FranchisePage() {
         </div>
       </PhotoHero>
 
-      {/* The concept, in pictures — cream */}
-      <section className="bg-cream py-16">
-        <Container className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
-          <Reveal>
-            <Label mark>The Concept</Label>
-            <Heading plain="Great Food. Refreshing Drinks." accent="Memorable Experiences." breakAccent />
-            <p className="mt-5 max-w-lg text-[1.05rem] leading-[1.8] text-ink/75">
-              Amaare is a contemporary dining destination built around thoughtfully crafted food, refreshing drinks, music
-              and an inviting atmosphere — made for easy, memorable evenings.
-            </p>
-            <div className="mt-8 grid max-w-md grid-cols-3 gap-3">
-              {["sushi", "golden-coupe", "skewers"].map((n) => (
-                <Photo key={n} src={`/images/menu/${n}.jpg`} alt="" className="aspect-[3/4] rounded-t-full" sizes="140px" />
-              ))}
-            </div>
-          </Reveal>
-          <Reveal delay={120} className="mx-auto w-full max-w-[400px]">
-            <ArchPhoto src="/images/menu/highball-garden.jpg" alt="A highball in Amaare's garden" className="aspect-[4/5]" sizes="400px" pos="center 40%" dark={false} />
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* Enquiry — green */}
+      {/* 2 · Enquiry */}
       <section id="enquire" className="relative scroll-mt-20 overflow-hidden bg-olive py-16 text-cream">
         <Brand kind="mark" tone="cream" className="pointer-events-none absolute -left-24 bottom-0 w-[380px] opacity-[0.035]" />
         <Container className="relative grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
@@ -62,12 +72,14 @@ export default function FranchisePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Pill href={site.phoneHref} tone="outline">
-                Call {site.phone}
+                Call Us
               </Pill>
               <Pill href={site.whatsapp} tone="outline">
                 WhatsApp
               </Pill>
             </div>
+            <p className="accent mt-10 text-[1.6rem] text-sage-pale">Let&apos;s build the next Amaare.</p>
+            <p className="mt-1 text-sm text-cream/60">Your city could be home to the next Amaare experience.</p>
           </Reveal>
           <Reveal delay={120}>
             <EnquiryForm
@@ -91,14 +103,31 @@ export default function FranchisePage() {
         </Container>
       </section>
 
-      <FinalCta
-        image="/images/menu/amber-old-fashioned.jpg"
-        plain="Let's Build the"
-        accent="Next Amaare"
-        lines={["Your city could be home to the next Amaare experience."]}
-        primary={{ href: "#enquire", label: "Enquire About a Franchise" }}
-        secondary={{ href: site.whatsapp, label: "WhatsApp Us" }}
-      />
+      {/* 3 · Franchise FAQs */}
+      <section className="bg-cream py-16">
+        <Container className="max-w-3xl">
+          <Reveal className="text-center">
+            <Label mark center>
+              Good to Know
+            </Label>
+            <Heading plain="Franchise" accent="FAQs" center />
+          </Reveal>
+          <Reveal delay={100} className="mt-10 border-t border-ink/15">
+            {faqs.map((f, i) => (
+              <details key={f.q} className="group border-b border-ink/15" open={i === 0}>
+                <summary className="flex cursor-pointer items-center justify-between gap-6 py-5">
+                  <span className="display text-[1.3rem] leading-snug text-olive">{f.q}</span>
+                  <span aria-hidden className="faq-icon text-2xl font-light text-sage transition-transform duration-300">
+                    +
+                  </span>
+                </summary>
+                <p className="-mt-1 pb-5 leading-relaxed text-ink/70">{f.a}</p>
+              </details>
+            ))}
+          </Reveal>
+        </Container>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      </section>
     </>
   );
 }
