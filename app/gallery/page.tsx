@@ -13,24 +13,31 @@ export const metadata: Metadata = {
 
 // To add photos: drop the file in public/images and add a line here (w/h = the image's pixel size).
 const photos: GalleryPhoto[] = [
+  { src: "/images/space/conservatory-wide.jpg", w: 2400, h: 1794, alt: "The sunlit glasshouse with lanterns, palms and checkered floor", caption: "The glasshouse", category: "space" },
   { src: "/images/menu/highball-garden.jpg", w: 1800, h: 1200, alt: "A highball with a leaf garnish in Amaare's garden", caption: "Green, all around", category: "space" },
   { src: "/images/menu/dimsum.jpg", w: 1200, h: 1800, alt: "Dim sum lifted from a bamboo steamer", caption: "Steamed, to share", category: "food" },
   { src: "/images/menu/negroni.jpg", w: 1200, h: 1800, alt: "A ruby-red cocktail on an Amaare coaster", caption: "A ruby pour", category: "food" },
-  { src: "/images/arches-night.jpg", w: 1217, h: 683, alt: "The lit arches over the terrace after dark", caption: "Under the arches", category: "evenings" },
+  { src: "/images/space/rooftop-arches-night.jpg", w: 2400, h: 1600, alt: "The rooftop terrace under lit arches after dark", caption: "Under the arches", category: "evenings" },
   { src: "/images/menu/pink-cocktail.jpg", w: 1200, h: 1800, alt: "A pink cocktail beside a sculpture in the garden", caption: "Golden hour", category: "evenings" },
   { src: "/images/menu/sushi.jpg", w: 1200, h: 1800, alt: "Avocado roll on a marble table", caption: "Made for the table", category: "food" },
-  { src: "/images/hero-statue.jpg", w: 953, h: 896, alt: "The carved stone face at Amaare, lit at dusk", caption: "The stone face", category: "space" },
+  { src: "/images/space/statue-sunset.jpg", w: 2400, h: 1599, alt: "The giant sculpted face on Amaare's rooftop at sunset", caption: "Sunset on the rooftop", category: "space" },
   { src: "/images/menu/chaat-plate.jpg", w: 1200, h: 1800, alt: "A layered plate served in a ceramic hand", caption: "Something to celebrate", category: "celebrations" },
   { src: "/images/menu/golden-coupe.jpg", w: 1200, h: 1800, alt: "A golden cocktail in a coupe glass", caption: "Raise a glass", category: "celebrations" },
-  { src: "/images/red-bar.jpg", w: 1223, h: 683, alt: "The glowing amber bar at night", caption: "The bar, after dark", category: "evenings" },
+  { src: "/images/space/rooftop-entrance-night.jpg", w: 2400, h: 1600, alt: "The glowing onyx bar and the Amaare sign at night", caption: "The bar, after dark", category: "evenings" },
   { src: "/images/menu/matcha-sour.jpg", w: 1200, h: 1800, alt: "A green cocktail on a carved stone ledge", caption: "On the stone ledge", category: "space" },
   { src: "/images/menu/skewers.jpg", w: 1200, h: 1800, alt: "Glazed skewers lifted from the plate", caption: "Off the grill", category: "food" },
   { src: "/images/menu/amber-old-fashioned.jpg", w: 1200, h: 1800, alt: "An amber cocktail with a caramel garnish", caption: "Slow sips", category: "evenings" },
   { src: "/images/menu/lace-dumpling.jpg", w: 1200, h: 1800, alt: "Pan-crisped dumplings with golden lace", caption: "Golden lace", category: "food" },
-  { src: "/images/domes.jpg", w: 643, h: 612, alt: "Glass cloches and a table lamp on a striped banquette", caption: "Set for the evening", category: "space" },
+  { src: "/images/space/marble-table.jpg", w: 1600, h: 2400, alt: "A red marble table set with brass lamp and amber glasses", caption: "Set for the evening", category: "space" },
   { src: "/images/menu/paprika-gin.jpg", w: 1200, h: 1800, alt: "A spiced-rim cocktail on an Amaare coaster", caption: "A spiced rim", category: "celebrations" },
+  { src: "/images/space/bar-face.jpg", w: 1600, h: 2400, alt: "The carved stone face behind the bar", caption: "Behind the bar", category: "space" },
+  { src: "/images/space/conservatory-lounge.jpg", w: 2400, h: 1600, alt: "Cream sofas beside the fountain in the glasshouse", caption: "By the fountain", category: "space" },
+  { src: "/images/space/statue-dusk.jpg", w: 2400, h: 1599, alt: "The rooftop sculpture lit at dusk", caption: "Blue hour", category: "evenings" },
+  { src: "/images/space/dining-sign.jpg", w: 1600, h: 2400, alt: "Sunlit dining room with lanterns and the Amaare sign", caption: "Lunch, in the light", category: "space" },
+  { src: "/images/space/rooftop-aerial.jpg", w: 2400, h: 1599, alt: "The rooftop terrace and bar at golden hour", caption: "Golden hour", category: "celebrations" },
+  { src: "/images/space/conservatory-aisle.jpg", w: 1600, h: 2400, alt: "A long row of tables under the wooden ceiling", caption: "Long tables", category: "celebrations" },
   { src: "/images/menu/ribs.jpg", w: 1200, h: 1800, alt: "Sticky glazed ribs with sesame", caption: "Sticky, charred, shared", category: "food" },
-  { src: "/images/franchise-arches.jpg", w: 956, h: 859, alt: "The garden terrace under lit arches", caption: "The terrace", category: "space" },
+  { src: "/images/space/rooftop-terrace.jpg", w: 2400, h: 1599, alt: "Rooftop tables under glass cloches at dusk", caption: "The terrace", category: "celebrations" },
 ];
 
 // Section copy from the SEO / AEO / GEO strategy doc.

@@ -88,7 +88,7 @@ export const posts: Post[] = [
     tag: "Neighbourhood",
     title: "Best Restaurants Near Hauz Khas",
     excerpt: "Just minutes from the village, a few tables worth the short drive.",
-    image: "/images/arches-night.jpg",
+    image: "/images/space/rooftop-arches-night.jpg",
   },
   {
     slug: "dining-experiences-to-try-in-south-delhi",

@@ -23,7 +23,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <PhotoHero image="/images/menu/pink-cocktail.jpg" pos="center 60%" label="Contact" plain="Come Dine" accent="With Us">
+      <PhotoHero image="/images/space/rooftop-terrace.jpg" pos="center 55%" label="Contact" plain="Come Dine" accent="With Us">
         <p>Planning dinner, a celebration, or simply looking for your next favourite table? We&apos;d love to welcome you.</p>
         <div className="mt-8">
           <Pill href="#enquiry" tone="cream">
@@ -115,7 +115,7 @@ export default function ContactPage() {
       </section>
 
       <FinalCta
-        image="/images/menu/amber-old-fashioned.jpg"
+        image="/images/space/statue-dusk.jpg"
         plain="Your Table"
         accent="Awaits"
         lines={["Good food. Good drinks. Good company.", "See you at Amaare."]}

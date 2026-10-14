@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
     locale: "en_IN",
-    images: ["/images/arches-night.jpg"],
+    images: ["/images/space/rooftop-entrance-night.jpg"],
   },
 };
 
@@ -50,7 +50,7 @@ const restaurantSchema = {
   description: site.description,
   url: site.url,
   telephone: site.phone,
-  image: `${site.url}/images/arches-night.jpg`,
+  image: `${site.url}/images/space/rooftop-entrance-night.jpg`,
   servesCuisine: "Contemporary",
   acceptsReservations: true,
   address: {

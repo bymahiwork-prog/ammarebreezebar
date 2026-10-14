@@ -27,7 +27,7 @@ const pillars = [
     plain: "Easy Evenings.",
     accent: "Good Energy.",
     text: "A welcoming setting, great music, refreshing drinks and the right company come together to create the Amaare experience. Come for dinner. Stay for the conversation. Make an evening of it.",
-    image: "/images/menu/pink-cocktail.jpg",
+    image: "/images/space/conservatory-aisle.jpg",
     pos: "center 60%",
   },
   {
@@ -44,7 +44,7 @@ const pillars = [
 export default function AboutPage() {
   return (
     <>
-      <PhotoHero image="/images/menu/highball-garden.jpg" pos="center 40%" label="About Amaare" plain="The Amaare" accent="Dining Experience">
+      <PhotoHero image="/images/space/conservatory-lounge.jpg" pos="center 55%" label="About Amaare" plain="The Amaare" accent="Dining Experience">
         <p className="kicker mb-4 text-[0.7rem] tracking-[0.22em] text-cream/90">
           Good food · Thoughtful drinks · An atmosphere made for lingering
         </p>
@@ -59,7 +59,7 @@ export default function AboutPage() {
         <Brand kind="mark" tone="sage" className="pointer-events-none absolute -left-20 top-10 w-[300px] opacity-[0.06]" />
         <Container className="relative grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal className="mx-auto w-full max-w-[420px]">
-            <ArchPhoto src="/images/menu/dimsum.jpg" alt="Dim sum lifted from a bamboo steamer at Amaare" className="aspect-[4/5]" sizes="420px" pos="center 40%" dark={false} />
+            <ArchPhoto src="/images/space/dining-sign.jpg" alt="The sunlit dining room at Amaare, lanterns overhead" className="aspect-[4/5]" sizes="420px" pos="center 50%" dark={false} />
           </Reveal>
           <Reveal delay={120}>
             <Label mark>Our Philosophy</Label>
@@ -113,8 +113,8 @@ export default function AboutPage() {
 
       {/* Photo band */}
       <section aria-hidden className="grid grid-cols-3 gap-1 bg-olive-deep sm:grid-cols-6">
-        {["negroni", "skewers", "golden-coupe", "lace-dumpling", "matcha-sour", "ribs"].map((n) => (
-          <Photo key={n} src={`/images/menu/${n}.jpg`} alt="" className="aspect-square" sizes="(min-width:640px) 17vw, 33vw" />
+        {["space/marble-table", "menu/negroni", "space/bar-face", "menu/lace-dumpling", "space/conservatory-aisle", "menu/matcha-sour"].map((n) => (
+          <Photo key={n} src={`/images/${n}.jpg`} alt="" className="aspect-square" sizes="(min-width:640px) 17vw, 33vw" />
         ))}
       </section>
 
@@ -145,7 +145,7 @@ export default function AboutPage() {
       </section>
 
       <FinalCta
-        image="/images/arches-night.jpg"
+        image="/images/space/rooftop-entrance-night.jpg"
         plain="Come As You Are."
         accent="Stay For The Evening."
         lines={["Good food, good drinks, and a table waiting for you."]}

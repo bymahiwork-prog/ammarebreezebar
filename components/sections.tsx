@@ -82,7 +82,7 @@ export function Marquee({ words, dark = false }: { words: string[]; dark?: boole
 }
 
 /** Full-bleed closing call to reserve. */
-export function TableAwaits({ image = "/images/arches-night.jpg" }: { image?: string }) {
+export function TableAwaits({ image = "/images/space/rooftop-arches-night.jpg" }: { image?: string }) {
   return (
     <section className="relative isolate overflow-hidden bg-olive text-cream">
       <Image src={image} alt="" fill sizes="100vw" className="-z-10 object-cover" />

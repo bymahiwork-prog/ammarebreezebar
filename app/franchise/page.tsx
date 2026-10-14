@@ -47,7 +47,7 @@ export default function FranchisePage() {
   return (
     <>
       {/* 1 · Hero */}
-      <PhotoHero image="/images/arches-night.jpg" label="Franchise Opportunity" plain="Bring Amaare to" accent="Your City">
+      <PhotoHero image="/images/space/rooftop-aerial.jpg" pos="center 60%" label="Franchise Opportunity" plain="Bring Amaare to" accent="Your City">
         <p>Partner with a dining concept built around great food, refreshing drinks, and memorable experiences.</p>
         <p className="mt-3">Explore opportunities to grow with Amaare Breeze Bar and bring the brand to new destinations.</p>
         <div className="mt-8">

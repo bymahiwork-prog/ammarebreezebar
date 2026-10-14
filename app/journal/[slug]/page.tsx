@@ -52,7 +52,7 @@ export default async function JournalPost({ params }: PageProps<"/journal/[slug]
           </div>
         </Container>
       </article>
-      <FinalCta image="/images/menu/amber-old-fashioned.jpg" plain="Your Table" accent="Awaits" lines={["Good food. Good drinks. Good company.", "See you at Amaare."]} />
+      <FinalCta image="/images/space/rooftop-arches-night.jpg" plain="Your Table" accent="Awaits" lines={["Good food. Good drinks. Good company.", "See you at Amaare."]} />
     </>
   );
 }

@@ -35,10 +35,10 @@ const marquee = [
 ];
 
 const moments = [
-  { n: "01", title: "Daytime Glasshouse", text: "Sunlit lunches and easy afternoons with the people you like most.", image: "/images/menu/dimsum.jpg", pos: "center 45%" },
-  { n: "02", title: "Sunset", text: "Cocktails, good music and the hour when the evening settles in.", image: "/images/menu/pink-cocktail.jpg", pos: "center 60%" },
-  { n: "03", title: "Under the Stars", text: "Long dinners and conversations that run past dessert.", image: "/images/arches-night.jpg" },
-  { n: "04", title: "Good Company", text: "Dinner for two, drinks with friends, or simply a reason to step out.", image: "/images/menu/skewers.jpg", pos: "center 55%" },
+  { n: "01", title: "Daytime Glasshouse", text: "Sunlit lunches and easy afternoons with the people you like most.", image: "/images/space/conservatory-wide.jpg", pos: "center 60%" },
+  { n: "02", title: "Sunset", text: "Cocktails, good music and the hour when the evening settles in.", image: "/images/space/statue-sunset.jpg", pos: "center 45%" },
+  { n: "03", title: "Under the Stars", text: "Long dinners and conversations that run past dessert.", image: "/images/space/rooftop-entrance-night.jpg", pos: "center 45%" },
+  { n: "04", title: "Good Company", text: "Dinner for two, drinks with friends, or simply a reason to step out.", image: "/images/space/marble-table.jpg", pos: "center 50%" },
 ];
 
 export default function Home() {
@@ -48,10 +48,11 @@ export default function Home() {
       <section className="relative isolate flex h-[100svh] min-h-[600px] items-center overflow-hidden bg-olive-deep text-cream">
         <HeroSlider
           slides={[
+            { src: "/images/space/statue-sunset.jpg", pos: "center 50%" },
+            { src: "/images/space/conservatory-lounge.jpg", pos: "center 55%" },
+            { src: "/images/space/rooftop-entrance-night.jpg", pos: "center 50%" },
             { src: "/images/menu/highball-garden.jpg", pos: "center 40%" },
-            { src: "/images/menu/dimsum.jpg", pos: "center 40%" },
-            { src: "/images/arches-night.jpg" },
-            { src: "/images/menu/negroni.jpg", pos: "center 55%" },
+            { src: "/images/space/rooftop-terrace.jpg", pos: "center 55%" },
           ]}
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(24,30,22,.88)_0%,rgba(24,30,22,.62)_45%,rgba(24,30,22,.2)_100%)]" />
@@ -106,8 +107,8 @@ export default function Home() {
         <Brand kind="mark" tone="sage" className="pointer-events-none absolute -right-20 top-10 w-[300px] opacity-[0.06]" />
         <Container className="relative grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <Reveal className="grid grid-cols-[0.8fr_1.2fr] items-end gap-4">
-            <Photo src="/images/menu/golden-coupe.jpg" alt="A golden cocktail at the bar" className="aspect-[2/3] rounded-2xl" sizes="(min-width:1024px) 20vw, 40vw" />
-            <Photo src="/images/menu/dimsum.jpg" alt="Dim sum lifted from a bamboo steamer" className="aspect-[4/5] rounded-2xl" sizes="(min-width:1024px) 30vw, 60vw" pos="center 45%" />
+            <Photo src="/images/space/bar-face.jpg" alt="The carved stone face behind the bar at Amaare" className="aspect-[2/3] rounded-2xl" sizes="(min-width:1024px) 20vw, 40vw" />
+            <Photo src="/images/space/dining-sign.jpg" alt="Sunlit dining room with lanterns and the Amaare sign" className="aspect-[4/5] rounded-2xl" sizes="(min-width:1024px) 30vw, 60vw" pos="center 55%" />
           </Reveal>
           <Reveal delay={120}>
             <Label>About Amaare</Label>
@@ -256,7 +257,7 @@ export default function Home() {
 
       {/* 6 · Celebrations — full-bleed photo */}
       <section className="relative isolate overflow-hidden py-24 text-center text-cream">
-        <Image src="/images/menu/chaat-plate.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" style={{ objectPosition: "center 60%" }} />
+        <Image src="/images/space/rooftop-terrace.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" style={{ objectPosition: "center 60%" }} />
         <div className="absolute inset-0 -z-10 bg-olive-deep/75" />
         <Container className="max-w-3xl">
           <Reveal>
@@ -318,7 +319,7 @@ export default function Home() {
 
       {/* 9 · Final CTA */}
       <section className="relative isolate overflow-hidden py-24 text-center text-cream">
-        <Image src="/images/menu/amber-old-fashioned.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" />
+        <Image src="/images/space/rooftop-arches-night.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover" />
         <div className="absolute inset-0 -z-10 bg-olive-deep/75" />
         <Container className="max-w-2xl">
           <Reveal>
