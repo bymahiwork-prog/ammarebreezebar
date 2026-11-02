@@ -6,22 +6,30 @@ export const site = {
   shortName: "amaaré",
   tagline: "Breeze Bar",
   url: "https://amaarebreezebar.com",
+
   area: "Adchini, South Delhi",
+
   address:
     "81/4, Top Floor MMTC Rd, Adchini, MMTC Colony, Sarvodaya Enclave, New Delhi, Delhi 110017",
+
   phone: "+91 92898 95633",
   phoneHref: "tel:+919289895633",
   whatsapp: "https://wa.me/919289895633",
+  email: "[Email Address]",
+
   hours: "Daily: 12:00 PM – 1:00 AM",
-instagram: "@amaarebreezebar_delhi",
+
+  instagram: "@amaarebreezebar_delhi",
   instagramUrl:
     "https://www.instagram.com/amaarebreezebar_delhi/",
-mapsQuery:
+
+  mapsQuery:
     "81/4, Top Floor MMTC Rd, Adchini, MMTC Colony, Sarvodaya Enclave, New Delhi, Delhi 110017",
 
   description:
     "A contemporary dining destination in Adchini, South Delhi bringing together thoughtfully crafted food, refreshing drinks, and an inviting atmosphere.",
 };
+
 export const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapsQuery)}`;
 export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(site.mapsQuery)}&z=15&output=embed`;
 
